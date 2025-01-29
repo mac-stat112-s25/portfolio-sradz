@@ -107,5 +107,16 @@
       "In-class Activities",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Spatial Viz</span>"
     ]
+  },
+  {
+    "objectID": "ica/quarto-demo.html",
+    "href": "ica/quarto-demo.html",
+    "title": "\n10  My first Quarto document\n",
+    "section": "",
+    "text": "11 Intro\nMacalester College is in the Twin Cities. It has:\n\nfour seasons\nbagpipes\ndelightful students\n\nCheck it out for yourself:\n\n\n\n12 Exercise 1: Deduce Quarto features\nCheck out the appearance and contents of this document. Thoughts?\nIn the toolbar at the top of this document, Render the .qmd file into a .html file. Where is this file stored? Thoughts about its appearance / contents? Can you edit it?\nToggling between the .qmd and .html files, explain the purpose of the following features in the .qmd file:\n*\n**\n#\n-\n\\\n![](url)\n\n\n13 Exercise 2: Code\nHow does this appear in the .qmd? The .html? So…?!\nseq(from = 100, to = 1000, by = 50)\n\n\n14 Exercise 3: Chunks\nQuarto isn’t a mind reader – we must distinguish R code from text. We do so by putting code inside an R chunk:\n\nseq(from = 100, to = 1000, by = 50)\n\n [1]  100  150  200  250  300  350  400  450  500  550  600  650  700  750  800\n[16]  850  900  950 1000\n\n\n\nPut the seq() code in the chunk.\nPress the green arrow in the top right of the chunk. What happens in the qmd?\nRender. What appears in the html: R code, output, or both?\n\n\n\n15 Exercise 4: Practice\n\nUse R code to create the following sequence: 10 10 10 10\nStore the sequence as four_tens.\nUse an R function (which we haven’t learned!) to add up the numbers in four_tens.\n\n\nfour_tens&lt;-rep(10,4)\nfour_tens\n\n[1] 10 10 10 10\n\nsum(four_tens)\n\n[1] 40\n\n\n\n\n16 Exercise 5: Fix this code\nCode is a form of communication, and the code below doesn’t cut it.\nPut the code in a chunk and fix it.\n\nrep(x = 1, times = 10)\n\n [1] 1 1 1 1 1 1 1 1 1 1\n\nseq(from=100,to=1000,length=20)\n\n [1]  100.0000  147.3684  194.7368  242.1053  289.4737  336.8421  384.2105\n [8]  431.5789  478.9474  526.3158  573.6842  621.0526  668.4211  715.7895\n[15]  763.1579  810.5263  857.8947  905.2632  952.6316 1000.0000\n\nNo_students_in_class&lt;-27\nNo_students_in_class \n\n[1] 27\n\n\n\n\n17 Exercise 6: Comments\nRun the chunk below. Notice that R ignores anything in a line starting with a pound sign (#). If we took the # away we’d get an error!\n\n# This is a comment\n4 + 5\n\n[1] 9\n\n\nWe’ll utilize this feature to comment our code, i.e. leave short notes about what our code is doing. Below, replace the ??? with an appropriate comment.\n\n# create variables for temp in C and temp in F\n# convert *C to *F\n# display temp in *F\ntemperature_c &lt;- 10\ntemperature_f &lt;- temperature_c * 9/5 + 32\ntemperature_f\n\n[1] 50",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>My first Quarto document</span>"
+    ]
   }
 ]
