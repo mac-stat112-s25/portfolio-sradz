@@ -3,3 +3,237 @@ title: "Univariate Viz"
 ---
 
 Use this file for practice with the **univariate viz** in-class activity.  Refer to the class website for details.
+
+```{r}
+# Load the package
+library(tidyverse)
+
+#import data
+hikes<- read.csv("https://mac-stat.github.io/data/high_peaks.csv")
+```
+
+## Exercise 1: Research Questions {.unnumbered}
+```{r}
+head(hikes)
+```
+a.  What features would we like a visualization of the *categorical* difficulty `rating` variable to capture?
+- the frequency of each difficulty (how many hikes are moderate, etc)
+- the percentage of each difficulty (what percent were moderate, etc)
+b.  What about a visualization of the *quantitative* `elevation` variable?
+- the number of peaks within a certain threshold (eg 4500-5000, 5001-5500, etc)
+
+## Exercise 2: Load Tidyverse {.unnumbered}
+```{r}
+# Use the ggplot function
+ggplot(hikes, aes(x = rating))
+
+```
+## Exercise 3: Bar Chart of Ratings - Part 1 {.unnumbered}
+```{r}
+# Adds a bar chart with the number/count of hikes of each difficulty [geom_bar()]
+ggplot(hikes, aes(x = rating)) +
+  geom_bar()
+```
+```{r}
+# Adds a layer (label) that changes the y-axis label to be "Number of hikes" [labs(y = "Number of hikes")]
+ggplot(hikes, aes(x = rating)) +
+  geom_bar() +
+  labs(x = "Rating", y = "Number of hikes")
+```
+```{r}
+# Makes the colors of the bars blue [geom_bar(fill = "blue")]
+ggplot(hikes, aes(x = rating)) +
+  geom_bar(fill = "blue") +
+  labs(x = "Rating", y = "Number of hikes")
+```
+```{r}
+# Makes the outline of the bars orange [adds color = "orange" to geom_bar()]
+ggplot(hikes, aes(x = rating)) +
+  geom_bar(color = "orange", fill = "blue") +
+  labs(x = "Rating", y = "Number of hikes")
+```
+
+
+## Exercise 4: Bar Chart of Ratings - Part 2 {.unnumbered}
+```{r}
+# changes the style of the plot background [theme_minimal()]
+ggplot(hikes, aes(x = rating)) +
+  geom_bar(color = "orange", fill = "blue")  +
+  labs(x = "Rating", y = "Number of hikes") +
+  theme_minimal()
+```
+
+## Exercise 5: Bar Chart Follow-up {.unnumbered}
+
+#### Part a {.unnumbered}
+
+Reflect on the `ggplot()` code.
+
+* What's the purpose of the `+`? When do we use it?
+  * The `+` adds another layer to the plot. We use it when we want to add an additional component to our chart (eg labels, graph, etc)
+* We added the bars using `geom_bar()`? Why "geom"?
+ * Geometric??
+* What does `labs()` stand for?
+  * Labels
+* What's the difference between `color` and `fill`?
+  * Color` outlines the bars, but `fill` fills in the bars
+
+#### Part b {.unnumbered}
+
+In general, bar charts allow us to examine the following properties of a *categorical* variable:
+
+- **observed categories**: What categories did we observe?
+  - rating of hike (easy, moderate, difficult)
+- **variability between categories**: Are observations evenly spread out among the categories, or are some categories more common than others?
+Some categories are more common than others.
+  - Moderate was the most frequent and difficult was the least frequent.
+
+We must then *translate* this information into the *context* of our analysis, here hikes in the Adirondacks. Summarize below what you learned from the bar chart, in context.
+
+The majority of hikes in the Adirondacks were rated 'moderate.' Specifically, 27 of the 46 hikes (58.69%) were moderate. Difficult was the least frequent rating, with only 8 ratings. 
+
+#### Part c {.unnumbered}
+
+Is there anything you don't like about this barplot? For example: check out the x-axis again.
+
+
+There is a space between each of the bars. I also didn't like the ordering of the hikes.
+
+## Exercise 6: Sad Bar Chart {.unnumbered}
+```{r}
+ggplot(hikes, aes(x=elevation)) +
+  geom_bar()
+```
+- This plot shows each hike's elevation as an individual bar. This isn't helpful when determining the frequency of hikes within an elevation range/threshhold.
+
+## Exercise 7: A Historgram of Elevation {.unnumbered}
+
+* there are 6 hikes with an elevation between 4500 and 4700 ft
+* 4 hikes have an elevation >5100 ft
+
+__Describe the Histogram:__
+The center is around 4500 ft, while the average or typical hike elevation is between 4250 and 4500 ft. The hike distribution is unimodal and skewed right. The lowest hike has an elevation around 3800ft, while the highest hike has an elevation of ~5400 ft. Most of the hikes are between 4000 and 4750 ft and very few are above 5000 ft. There don't appear to be any outliers.
+
+
+## Exercise 8: Building Histograms - Part 1 {.unnumbered}
+```{r}
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram()
+```
+## Exercise 9: Building Histograms - Part 2 {.unnumbered}
+```{r}
+# Adds a histogram [geom_histogram()]
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram()
+```
+
+```{r}
+# Outlines each bar in white [color = "white"]
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white") 
+```
+
+```{r}
+# Makes the bars blue (fill = "blue")
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white", fill = "blue") 
+```
+```{r}
+# Adds labels to the plot axes [+ labs(x="", y = "")]
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white") +
+  labs(x = "Elevation (feet)", y = "Number of hikes")
+```
+```{r}
+# Makes the width of the bars 1000 [binwidth = 1000]
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white", binwidth = 1000) +
+  labs(x = "Elevation (feet)", y = "Number of hikes")
+```
+```{r}
+# Changes the width of the bars to be 5 (binwidth = 5)
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white", binwidth = 5) +
+  labs(x = "Elevation (feet)", y = "Number of hikes")
+```
+
+```{r}
+# Changes the bar width to 200 [binwidth = 200]
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white", binwidth = 200) +
+  labs(x = "Elevation (feet)", y = "Number of hikes")
+```
+
+
+## Exercise 10: Histogram Follow-Up {.unnumbered}
+
+- What function added the histogram layer / geometry?
+  - `geom_histogram()`
+- What’s the difference between `color` and `fill`?
+  - `color` edits the outline color, `fill` fills in the bars
+- Why does adding color = "white" improve the visualization?
+  - because the bars are next to eachother
+- What did binwidth do?
+  - changes the width (range of elevations) of the bars
+- Why does the histogram become ineffective if the binwidth is too big (e.g. 1000 feet)?
+  - makes too few bars with high frequency
+- Why does the histogram become ineffective if the binwidth is too small (e.g. 5 feet)?
+  - makes too many bars with low frequency
+
+
+## Exercise 11: Density Plots {.unnumbered}
+
+```{r}
+ggplot(hikes, aes(x = elevation)) +
+  geom_density()
+```
+## Exercise 12: Density Plots vs Histograms {.unnumbered}
+* `geom_density(color = "blue")` makes the outline of the curve blue
+* `geom_density(fill = "orange")` makes the area under the curve orange
+
+
+* density plots don't show the bars, unlike histograms, but they both show which values have the highest and lowest frequencies
+* typical elevation is between 4000 and 4250 ft
+* range is between approx 3800 and 5400
+* the shape is unimodal and skewed right 
+* majority of the hikes are between certain elevations, with some high outliers
+
+## Exercise 13: Code = communication {.unnumbered}
+
+```{r}
+# YUCK
+# put indents or tabs for lines of code after the first line 
+# so you can remember which plot the layers are part of 
+ggplot(hikes, aes(x = elevation)) +
+geom_histogram(color = "white", binwidth = 200) +
+labs(x = "Elevation (feet)", y = "Number of hikes")
+
+```
+```{r}
+# YUCK 
+# also hard to follow which plot the layers are modifying 
+# and it doesn't fit on one line (scroll wheel when rendered)
+ggplot(hikes, aes(x = elevation)) + geom_histogram(color = "white", binwidth = 200) + labs(x = "Elevation (feet)", y = "Number of hikes")
+
+```
+
+## Exercise 14: Practice
+
+```{r}
+# Data on students in this class
+survey <- read.csv("https://hash-mac.github.io/stat112site-s25/data/survey.csv")
+
+# World Cup data
+world_cup <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-29/worldcups.csv")
+
+ggplot(world_cup,aes(x=winner))+
+  geom_bar(color="white",fill="#56b05b", linewidth=1/2)+
+  labs(title="World Cup Winners",x="Country", y="# of Wins")+
+  theme_dark()
+
+ggplot(world_cup,aes(x=goals_scored))+
+  geom_histogram(binwidth=15,color="black", fill="grey")+
+  labs(title="Goals Scored",x="Goals",y="Frequency")
+
+```
+
