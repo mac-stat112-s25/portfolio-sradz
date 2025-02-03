@@ -3,3 +3,24 @@ title: "Bivariate Viz"
 ---
 
 Use this file to generate a professional looking **bivariate** visualization.  The visualization will not perfect the first time but you are expected to improve it throughout the semester especially after covering advanced topics such as effective viz.
+
+```{r}
+# set-up (load packages, import data)
+library(tidyverse)
+library(ggridges)
+elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv")
+
+# create a ridgeline plot
+ggplot(elections, aes(x=repub_pct_20,y=fct_reorder(state_abbr, repub_pct_20), fill=historical))+
+  geom_density_ridges(alpha=0.5)+
+  scale_fill_manual(values = c("blue", "purple", "red"))+
+  labs(x="% of GOP votes", y="State")
+
+```
+* States with the most variability county to county would have a flatter bar (larger std dev), but least variability have a taller graph (smaller std dev, more concentrated by the mean)???
+  * HI, TN, WV, etc have low variability
+  * VA, NM, etc have high variability
+* Some states have a high prop of counties w/ similar percentages of GOP voters, while others have more variation
+* Interesting that some historically red states have a lower GOP vote % than historically blue states (eg NM is lower than IL)
+  * I think this could be due to states w/ high urban dem-voting pop but a lot of rural GOP-voting counties (eg Chicago vs rural IL counties)
+  * How is % of GOP voters related to population density? Can urban vs rural explain the variation in GOP votes?
