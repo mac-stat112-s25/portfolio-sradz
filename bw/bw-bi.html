@@ -264,39 +264,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(ggridges)</span>
-<span id="cb3-2"><a href="#cb3-2"></a>elections <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/election_2020_county.csv"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3"></a></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># create a ridgeline plot</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x=</span>repub_pct_20,<span class="at">y=</span><span class="fu">fct_reorder</span>(state_abbr, repub_pct_20), <span class="at">fill=</span>historical))<span class="sc">+</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">alpha=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"purple"</span>, <span class="st">"red"</span>))<span class="sc">+</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"% of GOP votes"</span>, <span class="at">y=</span><span class="st">"State"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>weather <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/weather_3_locations.csv"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># create plot</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co"># How do 3pm temperatures (temp3pm) differ by location?</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">y=</span>temp3pm, <span class="at">fill=</span>location))<span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.7</span>)<span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>location)<span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Temperatures at 3pm in Three Australian Locations"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9"></a>       <span class="at">y =</span> <span class="st">"Temperature (*C)"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10"></a>       <span class="at">color =</span> <span class="st">"Location"</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a>       )<span class="sc">+</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>),</span>
+<span id="cb3-13"><a href="#cb3-13"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb3-14"><a href="#cb3-14"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>())<span class="sc">+</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a>    <span class="fu">scale_fill_viridis_d</span>(<span class="at">alpha=</span><span class="fl">0.5</span>)    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Picking joint bandwidth of 4.43</code></pre>
+<pre><code>Warning: Removed 19 rows containing non-finite outside the scale range
+(`stat_boxplot()`).</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="bw-bi_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure"><p><img src="bw-bi_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" alt="3 box plots comparing temperatures (in Celsius) of three different locations in Australia" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<ul>
-<li>States with the most variability county to county would have a flatter bar (larger std dev), but least variability have a taller graph (smaller std dev, more concentrated by the mean)???
-<ul>
-<li>HI, TN, WV, etc have low variability</li>
-<li>VA, NM, etc have high variability</li>
-</ul>
-</li>
-<li>Some states have a high prop of counties w/ similar percentages of GOP voters, while others have more variation</li>
-<li>Interesting that some historically red states have a lower GOP vote % than historically blue states (eg NM is lower than IL)
-<ul>
-<li>I think this could be due to states w/ high urban dem-voting pop but a lot of rural GOP-voting counties (eg Chicago vs rural IL counties)</li>
-<li>How is % of GOP voters related to population density? Can urban vs rural explain the variation in GOP votes?</li>
-</ul>
-</li>
-</ul>
 
 
 <!-- -->
@@ -939,25 +932,28 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb5-5"><a href="#cb5-5"></a>Use this file to generate a professional looking **bivariate** visualization.  The visualization will not perfect the first time but you are expected to improve it throughout the semester especially after covering advanced topics such as effective viz.</span>
 <span id="cb5-6"><a href="#cb5-6"></a></span>
 <span id="cb5-9"><a href="#cb5-9"></a><span class="in">```{r}</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co"># set-up (load packages, import data)</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="fu">library</span>(ggridges)</span>
-<span id="cb5-13"><a href="#cb5-13"></a>elections <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/election_2020_county.csv"</span>)</span>
-<span id="cb5-14"><a href="#cb5-14"></a></span>
-<span id="cb5-15"><a href="#cb5-15"></a><span class="co"># create a ridgeline plot</span></span>
-<span id="cb5-16"><a href="#cb5-16"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x=</span>repub_pct_20,<span class="at">y=</span><span class="fu">fct_reorder</span>(state_abbr, repub_pct_20), <span class="at">fill=</span>historical))<span class="sc">+</span></span>
-<span id="cb5-17"><a href="#cb5-17"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">alpha=</span><span class="fl">0.5</span>)<span class="sc">+</span></span>
-<span id="cb5-18"><a href="#cb5-18"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"purple"</span>, <span class="st">"red"</span>))<span class="sc">+</span></span>
-<span id="cb5-19"><a href="#cb5-19"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"% of GOP votes"</span>, <span class="at">y=</span><span class="st">"State"</span>)</span>
-<span id="cb5-20"><a href="#cb5-20"></a></span>
-<span id="cb5-21"><a href="#cb5-21"></a><span class="in">```</span></span>
-<span id="cb5-22"><a href="#cb5-22"></a><span class="ss">* </span>States with the most variability county to county would have a flatter bar (larger std dev), but least variability have a taller graph (smaller std dev, more concentrated by the mean)???</span>
-<span id="cb5-23"><a href="#cb5-23"></a><span class="ss">  * </span>HI, TN, WV, etc have low variability</span>
-<span id="cb5-24"><a href="#cb5-24"></a><span class="ss">  * </span>VA, NM, etc have high variability</span>
-<span id="cb5-25"><a href="#cb5-25"></a><span class="ss">* </span>Some states have a high prop of counties w/ similar percentages of GOP voters, while others have more variation</span>
-<span id="cb5-26"><a href="#cb5-26"></a><span class="ss">* </span>Interesting that some historically red states have a lower GOP vote % than historically blue states (eg NM is lower than IL)</span>
-<span id="cb5-27"><a href="#cb5-27"></a><span class="ss">  * </span>I think this could be due to states w/ high urban dem-voting pop but a lot of rural GOP-voting counties (eg Chicago vs rural IL counties)</span>
-<span id="cb5-28"><a href="#cb5-28"></a><span class="ss">  * </span>How is % of GOP voters related to population density? Can urban vs rural explain the variation in GOP votes?</span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#| fig-alt: 3 box plots comparing temperatures (in Celsius) of three different locations in Australia </span></span>
+<span id="cb5-11"><a href="#cb5-11"></a></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co"># set-up (load packages, import data)</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-14"><a href="#cb5-14"></a>weather <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/weather_3_locations.csv"</span>)</span>
+<span id="cb5-15"><a href="#cb5-15"></a></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="co"># create plot</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="co"># How do 3pm temperatures (temp3pm) differ by location?</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">y=</span>temp3pm, <span class="at">fill=</span>location))<span class="sc">+</span></span>
+<span id="cb5-19"><a href="#cb5-19"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width=</span><span class="fl">0.7</span>)<span class="sc">+</span></span>
+<span id="cb5-20"><a href="#cb5-20"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>location)<span class="sc">+</span></span>
+<span id="cb5-21"><a href="#cb5-21"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Temperatures at 3pm in Three Australian Locations"</span>,</span>
+<span id="cb5-22"><a href="#cb5-22"></a>       <span class="at">y =</span> <span class="st">"Temperature (*C)"</span>,</span>
+<span id="cb5-23"><a href="#cb5-23"></a>       <span class="at">color =</span> <span class="st">"Location"</span></span>
+<span id="cb5-24"><a href="#cb5-24"></a>       )<span class="sc">+</span></span>
+<span id="cb5-25"><a href="#cb5-25"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>),</span>
+<span id="cb5-26"><a href="#cb5-26"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb5-27"><a href="#cb5-27"></a>        <span class="at">axis.ticks.x =</span> <span class="fu">element_blank</span>())<span class="sc">+</span></span>
+<span id="cb5-28"><a href="#cb5-28"></a>    <span class="fu">scale_fill_viridis_d</span>(<span class="at">alpha=</span><span class="fl">0.5</span>)    </span>
+<span id="cb5-29"><a href="#cb5-29"></a></span>
+<span id="cb5-30"><a href="#cb5-30"></a></span>
+<span id="cb5-31"><a href="#cb5-31"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
