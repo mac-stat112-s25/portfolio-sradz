@@ -4,4 +4,32 @@ title: "Trivariate Viz"
 
 Use this file to generate a professional looking **trivariate** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
 
+```{r}
+#| fig-alt: "Scatterplot of SAT scores versus education spending per pupil, seperated by the percentage of students that took the test."
+
+# load packages and data
+library(tidyverse)
+education <- read.csv("https://mac-stat.github.io/data/sat.csv")
+
+
+# make the plot
+ggplot(education, aes(x=expend, y=sat, color=fracCat))+
+  geom_point(
+    size = 2, alpha=0.8
+  )+
+  geom_smooth(method="lm", se=FALSE)+
+  labs(title = "SAT scores vs. Education Spending, by Percent of Students Tested",
+       subtitle = "Numbers from 1994-95 school year",
+       x = "Expenditure per pupil (in thousands of dollars)",
+       y = "Average total SAT score",
+       color = "Percent of students \ntaking the SAT",
+       caption = "Created by Sarah, data from Deborah Lynn Guber and Danny Kaplan")+
+  theme(plot.title = element_text(face = "bold", size=13),
+    plot.caption = element_text(face = "italic"), size = 6)+
+  scale_color_manual(values = c("darkblue","green3","red3"),
+                     labels = c("0 to 15%", "15.01 to 45%", "45.01 to 100%"))
+
+
+
+```
 
