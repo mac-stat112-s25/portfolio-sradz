@@ -1,0 +1,121 @@
+---
+title: "ica-wrangling"
+format: html
+---
+
+**For wrangling exercises**
+
+## Warm-Up 
+
+### Example 1 {.unnumbered}
+Which verb would help us…
+
+* keep only information about state names, county names, and the 2020 and 2016 Democratic support (not the 2012 results, demographics, etc)
+  * select
+* get only the data on Minnesota
+  * filter
+* define a new variable which calculates the change in Democratic support from 2016 to 2020, using dem_pct_20 and dem_pct_16
+  * mutate
+* sort the counties from highest to lowest Democratic support
+  * arrange
+* determine the total number of votes cast across all counties
+  * summarize
+
+
+### Example 2: Select Columns {.unnumbered}
+
+```{r}
+elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv")
+library(tidyverse)
+
+```
+
+```{r}
+# What's the first argument? The second?
+# first argument: dataset
+# second argument: relevant columns
+select(elections, c(state_name, county_name, dem_pct_20, dem_pct_16))
+
+
+# with pipe function
+elections |> 
+  select(state_name, county_name, dem_pct_20, dem_pct_16)
+```
+
+### Example 3: Filter Rows {.unnumbered}
+
+```{r}
+# without a pipe
+filter(elections, state_name == "Minnesota")
+
+# with a pipe
+elections |> 
+  filter(state_name == "Minnesota")
+
+```
+
+### Example 4: Filter and Select {.unnumbered}
+
+```{r}
+# Without pipes
+filter(select(elections, c(state_name, county_name, dem_pct_20, dem_pct_16)), state_name == "Minnesota")
+
+# With pipes: all verbs in 1 row (ugly)
+elections |> select(state_name, county_name, dem_pct_20, dem_pct_16) |> filter(state_name == "Minnesota")
+
+# With pipes: each verb in a row
+elections |>
+  select(state_name, county_name, dem_pct_20, dem_pct_16) |>
+  filter(state_name == "Minnesota")
+
+# We can even do this with UN-tidyverse code in "base" R
+elections[elections$state_name == "Minnesota", c(1, 4, 8, 12)]
+
+# summary: use tidyerse code, the pipe function, and each verb on a new row 
+# this is easiest to read
+```
+
+### Example 5: Order of Operations
+
+```{r}
+# order doesn't matter here
+elections |> 
+  filter(state_name == "Minnesota") |>
+  select(state_name, county_name, dem_pct_20, dem_pct_16)
+
+elections |>
+  select(state_name, county_name, dem_pct_20, dem_pct_16) |>
+  filter(state_name == "Minnesota")
+
+
+```
+### Example 6: Storing Results {.unnumbered}
+```{r}
+# Store the results
+mn <- elections |> 
+  select(state_name, county_name, dem_pct_20, dem_pct_16) |> 
+  filter(state_name == "Minnesota")
+
+# Always check it out to confirm it's what you want it to be!
+head(mn)
+nrow(mn)
+nrow(elections)
+```
+## Exercises
+
+### Exercise 1 {.unnumbered}
+```{r}
+# create elections_small
+elections_small <- elections |>
+  select(state_name, county_name, total_votes_20, repub_pct_20, dem_pct_20, total_votes_16, dem_pct_16)
+
+# check it out!
+head(elections_small)
+
+
+elections |>
+  filter(dem_pct_16 <23.96)|>
+  select(county_name, dem_pct_16)
+```
+
+
