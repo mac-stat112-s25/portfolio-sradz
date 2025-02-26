@@ -31,14 +31,18 @@ book:
       - bw/bw-quad.qmd
       - bw/bw-spatial.qmd
 
-    - part: "In-class Activities"
+    - part: "In-class Activities: Viz"
       chapters: 
       - ica/quarto-demo.qmd
       - ica/ica-uni.qmd
       - ica/ica-bi.qmd
       - ica/ica-multi.qmd
       - ica/ica-spatial.qmd
+      
+    - part: "In-class Activities: Wrangling"
+      chapters: 
       - ica/ica-wrangling.qmd
+      - ica/ica-dates.qmd
 
 format:
   html:
