@@ -1,0 +1,111 @@
+---
+title: "Reshaping"
+format: html
+---
+
+## Warm-Up {.unnumbered}
+
+### Exercise 1 {.unnumbered}
+```{r}
+library(tidyverse)
+penguins <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-28/penguins.csv')
+```
+```{r}
+# Using count()
+penguins |>
+  count(species, sex)
+
+# Using group_by() and summarize()
+penguins |>
+  group_by(sex, species) |>
+  summarize(n())
+
+# proportion
+penguins |>
+  group_by(sex, species) |>
+  summarize(n = n()) |>
+  mutate(proportion = n/sum(n))
+
+# relative frequency 
+penguins |>
+  group_by(species, sex) |>
+  summarize(n = n()) |>
+  mutate(freq = n/sum(n))
+
+# order matters!
+# Changing the order calculates the proportion of species within each sex
+
+```
+```{r}
+# should get the average mass of each penguin species by sex
+# but returns error b/c avg_body_mass isn't there anymore
+penguin_avg <- penguins |> 
+  group_by(species, sex) |> 
+  summarize(avg_body_mass = mean(body_mass_g, na.rm = TRUE)) |> 
+  na.omit()
+```
+### Example 3 {.unnumbered}
+```{r}
+# Units of observation = penguins
+head(penguins)
+
+# Units of observation = penguin species/sex groups
+head(penguin_avg)
+```
+### Exercise 4/5 {.unnumbered}
+```{r}
+penguin_avg
+
+# widen the dataset
+# don't lose any information when widening
+# units = penguin species
+penguin_avg |> 
+  pivot_wider(names_from = sex, values_from = avg_body_mass) |>
+  mutate(difference = male-female)
+
+
+```
+### Exercise 6 {.unnumbered}
+```{r}
+penguin_avg_wide <- penguin_avg |> 
+  pivot_wider(names_from = sex, values_from = avg_body_mass)
+
+penguin_avg_wide
+
+# make longer
+# again, don't lose any information
+# units = penguin/sex combos
+penguin_avg_long <- penguin_avg_wide |>
+  pivot_longer(cols=2:3, names_to = "sex", values_to = "avg body mass")
+
+penguin_avg_long
+```
+### Exercise 7 {.unnumbered}
+```{r}
+# create  food data
+food <- data.frame(
+  customer = rep(c("A", "B"), each = 3),
+  restaurant = rep(c("Shish", "FrenchMeadow", "DunnBros"), 2),
+  order = c("falafel", "salad", "coffee", "baklava", "pastry", "tea")
+)
+food
+
+# make wider
+food |>
+  pivot_wider(names_from = restaurant, values_from = order)
+
+# add more food
+more_food <- data.frame(
+  customer = c("C", "D"),
+  Shish = c("coffee", "maza"),
+  FrenchMeadow = c("soup", "sandwich"),
+  DunnBros = c("cookie", "coffee")
+)
+more_food
+
+# make longer
+more_food |>
+  pivot_longer(cols = -customer, values_to = "order", names_to = "restaurant")
+
+```
+
