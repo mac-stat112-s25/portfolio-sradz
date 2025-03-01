@@ -1,0 +1,298 @@
+---
+title: "Dates"
+format: html
+---
+
+For in-class activities from the **dates** lesson
+
+## Warm-Ups {.unnumbered}
+
+### Example 1 {.unnumbered}
+```{r}
+library(tidyverse)
+penguins <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-28/penguins.csv')
+
+# Check it out
+head(penguins)
+
+# Explore the relationship between body mass and bill length varies by species and sex
+ggplot(penguins, aes(x = body_mass_g, y = bill_length_mm, color = species, shape = sex))+
+  geom_point()
+```
+```{r}
+# Get data on only Adelie penguins that weigh more than 4700g
+penguins |>
+  filter(species == "Adelie",
+         body_mass_g > 4700) |>
+  head()
+
+
+# Get data on penguin body mass only
+# Show just the first 6 rows
+penguins |>
+  select(body_mass_g) |>
+  head()
+
+
+# Sort the penguins from smallest to largest body mass
+# Show just the first 6 rows
+penguins |>
+  select(species, body_mass_g) |>
+  arrange(body_mass_g) |>
+  head()
+
+
+# Calculate the average body mass across all penguins
+# Note: na.rm = TRUE removes the NAs from the calculation
+penguins |>
+  summarize(mean(body_mass_g, na.rm = TRUE))
+  
+
+
+# Calculate the average body mass by species
+penguins |>
+  group_by(species) |>
+  summarize(mean(body_mass_g, na.rm = TRUE))
+
+
+# Create a new column that records body mass in kilograms, not grams
+# NOTE: there are 1000 g in 1 kg
+# Show just the first 6 rows
+penguins |>
+  mutate(body_mass_kg = body_mass_g/1000) |>
+  head()
+```
+```{r}
+ggplot(penguins, aes(x = species))+
+  geom_bar()
+
+penguins |>
+  count(species) 
+```
+
+### Exercise 2 {.unnumbered}
+
+```{r}
+# Sort Gentoo penguins from biggest to smallest with respect to their 
+# bill length in cm (there are 10 mm in a cm)
+
+penguins |>
+  filter(species == "Gentoo") |>
+  mutate(bill_length_cm = bill_length_mm / 10) |>
+  arrange(desc(bill_length_cm)) |>
+  head()
+
+# Sort the species from smallest to biggest with respect to their 
+# average bill length in cm
+
+penguins |>
+  group_by(species) |>
+  mutate(bill_length_cm = bill_length_mm / 10) |>
+  summarize(mean_bill_length = mean(bill_length_cm, na.rm = TRUE)) |>
+  arrange(mean_bill_length)
+```
+### Exercise 3 {.unnumbered}
+* 2 rows (male and female)
+* 3 column (body mass min, max, and range)
+* each row represents the summary of male and female Chinstrap penguins
+
+```{r}
+penguins |> 
+  filter(species == "Chinstrap") |> 
+  group_by(sex) |> 
+  summarize(min = min(body_mass_g), max = max(body_mass_g)) |> 
+  mutate(range = max - min)
+
+
+```
+## New Exercises {.unnumbered}
+
+```{r}
+# Create a dataset with just Adelie and Chinstrap using %in%
+# Pipe this into `count(species)` to confirm that you only have these 2 species
+penguins |>
+  filter(species %in% c("Adelie", "Chinstrap")) |>
+  count(species)
+
+# Create a dataset with just Adelie and Chinstrap using !=
+# Pipe this into `count(species)` to confirm that you only have these 2 species
+penguins |>
+  filter(species != "Gentoo") |>
+  count(species)
+
+```
+
+```{r}
+# NOTE the use of is.na()
+penguins |> 
+  summarize(sum(is.na(body_mass_g)))
+
+# Let’s define a new dataset that removes these penguins:
+penguins_w_body_mass <- penguins |>
+  filter(!is.na(body_mass_g))
+
+nrow(penguins_w_body_mass)
+nrow(penguins)
+
+# get rid of any penguin that's missing info on any variable
+penguins_complete <- penguins |> 
+  na.omit()
+
+nrow(penguins)
+nrow(penguins_complete)
+```
+### Exercise 2 {.unnumbered}
+
+```{r}
+# First: recall the variable names
+names(penguins)
+
+# Use a shortcut to keep everything but the year and island variables
+penguins |>
+  select(-"year", -"island") |>
+  head()
+
+# Use a shortcut to keep only species and the penguin characteristics measured in mm
+penguins |>
+  select("species", contains("mm")) |>
+  head()
+
+# Use a shortcut to keep only species and bill-related measurements
+penguins |>
+  select("species", contains("bill")) |>
+  head()
+
+# Use a shortcut to keep only species and the length-related characteristics
+penguins |>
+  select("species", contains("length")) |>
+  head()
+```
+### Exercise 3 {.unnumbered}
+
+```{r}
+# Change this code to sort the penguins by species, and then island name
+# NOTE: The first row should be an Adelie penguin living on Biscoe island
+penguins |> 
+  arrange(species) |>
+  arrange(island) |>
+  head()
+
+# Change this code to count the number of male/female penguins observed for each species
+penguins |> 
+  filter(!is.na(sex)) |>
+  group_by(sex) |>
+  count(species) |>
+  arrange(species)
+```
+
+### Exercise 4 {.unnumbered}
+
+```{r}
+# Get today's date
+as.Date(today())
+
+# Let's store this as "today" so we can work with it below
+today <- as.Date(today())
+
+# Check out the class of this object
+class(today)
+
+# using lubridate package
+year(today)
+
+# What do these lines produce / what's their difference?
+# putting label = TRUE puts the name of the month corresponding to the number 
+month(today)
+month(today, label = TRUE)
+```
+## Exercises Part 2: Applications {.unnumbered}
+
+```{r}
+library(mosaic)
+data("Birthdays")
+head(Birthdays)
+```
+### Exercise 5 {.unnumbered}
+```{r}
+# How many days of data do we have for each state?
+Birthdays |> 
+  group_by(state) |>
+  summarize(days = sum(day)) 
+
+
+# How many total births were there in this time period?
+Birthdays |>
+  summarize(total_births = sum(births))
+
+
+# How many total births were there per state in this time period, sorted from low to high?
+Birthdays |>
+  group_by(state) |>
+  summarize(total_births = sum(births)) |>
+  arrange(total_births) |>
+  head()
+
+```
+### Exercise 6 {.unnumbered}
+
+```{r}
+# create dataset
+daily_births <- Birthdays |>
+  group_by(date) |>
+  summarize(total_births = sum(births)) |>
+  mutate(day = wday(date, label=TRUE))
+
+head(daily_births)
+
+# plot
+ggplot(daily_births, aes(x=date, y=total_births, color=day))+
+  geom_point()
+```
+### Exercise 7
+```{r}
+# wrangle and store data, then plot
+penguins_minus_Gentoo <- penguins |>
+  filter(species != "Gentoo") 
+
+
+ggplot(penguins_minus_Gentoo, aes(x = bill_depth_mm, y = bill_length_mm, color = species)) +
+  geom_point()
+
+# wrangle data and pipe into ggplot
+penguins |> 
+  filter(species != "Gentoo") |> 
+  ggplot(aes(y = bill_length_mm, x = bill_depth_mm, color = species)) + 
+    geom_point()
+```
+```{r}
+# Calculate the total number of births in each month and year, eg, Jan 1969, Feb 1969,
+# Label month by names not numbers, eg, Jan not 1. 
+# Then, plot the births by month and comment on what you learn.
+
+Birthdays |>
+  group_by(month, year) |>
+  summarize(total_births = sum(births)) |>
+  mutate(month = month(month, label=TRUE)) |>
+  arrange(year) |>
+  ggplot(aes(x = total_births, fill=month))+
+    geom_density(alpha=0.5)+
+    facet_wrap(~month)
+
+
+```
+* more births in August, September
+* most of the months are bimodal (one small peak, one large peak)
+
+```{r}
+# In 1988, calculate the total number of births per week in each state. 
+# Get rid of week “53”, which isn’t a complete week! 
+# Then, make a line plot of births by week for each state and comment on what you learn. 
+# For example, do you notice any seasonal trends? Are these the same in every state? Any outliers?
+
+Birthdays |>
+  group_by(state) |>
+  summarize(total_births = sum(births)) |>
+  head()
+
+```
+
