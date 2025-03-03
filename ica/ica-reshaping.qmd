@@ -108,4 +108,178 @@ more_food |>
   pivot_longer(cols = -customer, values_to = "order", names_to = "restaurant")
 
 ```
+## Exercises
+
+### Exercise 1 {.unnumbered}
+
+```{r}
+sleep_wide <- read.csv("https://mac-stat.github.io/data/sleep_wide.csv")
+
+head(sleep_wide)
+```
+* observations = subjects
+* ggplot(**sleep_wide**, aes(y = **reaction_time**, x = **day**, color = **subject**))
+
+* can't do using sleep_wide, but could by making it longer (using pivot_longer())
+
+### Exercise 2 {.unnumbered}
+```{r}
+sleep_long <- sleep_wide |>
+  pivot_longer(cols = -Subject, 
+               names_to = "day", 
+               values_to = "reaction_time",
+               names_prefix = "day_") # name_prefix dropped the "day_" part of day values
+
+head(sleep_long)
+
+# plot
+ggplot(sleep_long, aes(x=day, y=reaction_time, color = Subject))+
+  geom_line()
+
+# day is a character and we want it to be a number 
+# subject is integer and we want it to be a category?
+
+
+```
+### Exercise 3 {.unnumbered}
+```{r}
+sleep_long <- sleep_wide |>
+  pivot_longer(cols = -Subject,
+               names_to = "day",
+               names_prefix = "day_",
+               values_to = "reaction_time") |> 
+  mutate(Subject = as.factor(Subject), day = as.numeric(day))
+
+# Check it out
+# Same data, different class
+head(sleep_long)
+
+# now subject is a factor; day is a number
+```
+
+```{r}
+# Make a line plot of reaction time by day for each subject
+# Put these all on the same frame
+
+ggplot(sleep_long, aes(x=day, y=reaction_time, color=Subject))+
+  geom_line()
+
+# Make a line plot of reaction time by day for each subject
+# Put these all on separate frames (one per subject)
+
+ggplot(sleep_long, aes(x=day, y=reaction_time, color=Subject))+
+  geom_line()+
+  facet_wrap(~Subject)
+
+```
+**Summary:**
+As the number of days increases, reaction time generally tends to increase. However, the extent to which reaction time increases and the rate that it increases by varies from subject to subject. There are some peaks/spikes for some subjects, like 370 or 332, but not for all.
+
+### Exercise 4 {.unnumbered}
+```{r}
+# make wide again
+# don't like how the column labels are just numbers (day is not mentioned)
+sleep_long |>
+  pivot_wider(names_from = day, values_from = reaction_time) |>
+  head()
+
+# add column titles using names_prefix argument
+sleep_long |>
+  pivot_wider(names_from = day, values_from = reaction_time, names_prefix = "day_") |>
+  head()
+```
+### Exercise 5 {.unnumbered}
+```{r}
+# Load data
+library(tidyr)
+data("billboard")
+
+# Check it out
+head(billboard)
+```
+```{r}
+# part a
+ggplot(billboard, aes(x=wk1, y=wk2))+
+  geom_point()+
+  geom_abline(intercept = 0, slope = 1)
+
+# part b
+billboard |>
+  mutate(improved = wk2 > wk1) |>
+  filter(improved == "TRUE") |>
+  head()
+
+# part c
+# Define nov_1999
+nov_1999 <- billboard |>
+  filter(date.entered == "1999-11-06") |>
+  select(-track, -date.entered)
+
+# Confirm that nov_1999 has 2 rows (songs) and 77 columns
+dim(nov_1999)
+ 
+```
+```{r}
+# part d
+nov_1999 |>
+  pivot_longer(cols= -artist, 
+               names_to = "week", values_to = "ranking", 
+               names_prefix = "wk") |>
+  mutate(week = as.numeric(week)) |>
+  ggplot(aes(x=week, y = ranking, color = artist))+
+  geom_line()
+```
+
+### Exercise 6 {.unnumbered}
+```{r}
+library(fivethirtyeight)
+data("daily_show_guests")
+daily <- daily_show_guests
+```
+#### Part a {.unnumbered}
+```{r}
+daily |>
+  count(raw_guest_list) |>
+  arrange(desc(n)) |>
+  head(15)
+```
+
+#### Part b {.unnumbered}
+```{r}
+daily2 <- daily |>
+  count(year, raw_guest_list) |>
+  group_by(raw_guest_list) |>
+  mutate(total = sum(n)) |>
+  pivot_wider(values_from = n, names_from = year, values_fill = 0) |>
+  arrange(desc(total)) |>
+  head(15)
+
+
+daily2
+```
+#### part c {.unnumbered}
+```{r}
+daily |> 
+  count(group)
+
+plot_data <- daily |> 
+  mutate(broad_group = case_when(
+    group %in% c("Acting", "Athletics", "Comedy", "Musician") ~ "Acting, Comedy & Music",
+    group %in% c("Media", "media", "Science", "Academic", "Consultant", "Clergy") ~ "Media",
+    group %in% c("Politician", "Political Aide", "Government", "Military", "Business", "Advocacy") ~ "Government and Politics",
+    .default = NA
+  )) |> 
+  filter(!is.na(broad_group))
+```
+
+```{r}
+plot_data |>
+  group_by(year, broad_group) |>
+  summarize(n = n()) |>
+  mutate(freq = n/sum(n)) |>
+  ggplot(aes(x=year, y=freq, color=broad_group))+
+  geom_line()
+  
+
+```
 
