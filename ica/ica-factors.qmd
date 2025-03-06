@@ -1,0 +1,6 @@
+---
+title: "Factors"
+format: html
+---
+
+Use this file for practice with the **factors** in-class activity. Refer to the class website for details.

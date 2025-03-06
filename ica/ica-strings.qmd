@@ -1,0 +1,6 @@
+---
+title: "ica-strings"
+format: html
+---
+
+Use this file for practice with the **Strings** in-class activity. Refer to the class website for details.

@@ -3,7 +3,7 @@ title: "Dates"
 format: html
 ---
 
-For in-class activities from the **dates** lesson
+Use this file for practice with the **dates** in-class activity. Refer to the class website for details.
 
 ## Warm-Ups {.unnumbered}
 

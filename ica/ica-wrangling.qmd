@@ -1,9 +1,10 @@
 ---
-title: "ica-wrangling"
+title: "Wrangling"
 format: html
 ---
 
-**For wrangling exercises**
+Use this file for practice with the **wrangling** in-class activity. Refer to the class website for details.
+
 
 ## Warm-Up {.unnumbered}
 
