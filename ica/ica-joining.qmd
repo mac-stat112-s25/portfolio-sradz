@@ -128,8 +128,9 @@ students_2 |>
 # The order of the keys is important:
 # join_by("left data key" == "right data key")
 # The order is mixed up here, thus we get an error:
-students_2 |> 
-  left_join(enrollments_2, join_by(course == class))
+
+# students_2 |> 
+  # left_join(enrollments_2, join_by(course == class))
 ```
 #### Part c {.unnumbered}
 ```{r}
