@@ -4,3 +4,103 @@ format: html
 ---
 
 Use this file for practice with the **factors** in-class activity. Refer to the class website for details.
+
+
+## Examples {.unnumbered}
+
+### Example 1 {.unnumbered}
+```{r}
+library(tidyverse)
+elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv") |> 
+  select(state_abbr, historical, county_name, total_votes_20, repub_pct_20, dem_pct_20) |> 
+  mutate(dem_support_20 = case_when(
+    (repub_pct_20 - dem_pct_20 >= 5) ~ "low",
+    (repub_pct_20 - dem_pct_20 <= -5) ~ "high",
+    .default = "medium"
+  ))
+
+# Check it out
+head(elections)  
+```
+```{r}
+ggplot(elections, aes(x = dem_support_20)) + 
+  geom_bar()
+
+# ordered in alphabetical order (high, low, medium) and not in order of support :(
+```
+### Example 2 {.unnumbered}
+```{r}
+# Notice that the order of the levels is not alphabetical!
+elections <- elections |>
+  mutate(dem_support_20 = fct_relevel(dem_support_20, c("low", "medium", "high")))
+
+# dem_support_20 is now a factor
+str(elections)
+
+# plot
+ggplot(elections, aes(x=dem_support_20))+
+  geom_bar()
+```
+
+### Example 3 {.unnumbered}
+
+```{r}
+elections |> 
+  count(dem_support_20)
+
+# We can redefine any number of the category labels.
+# Here we'll relabel all 3 categories:
+elections <- elections |> 
+  mutate(results_20 = fct_recode(dem_support_20, 
+                                 "strong republican" = "low",
+                                 "close race" = "medium",
+                                 "strong democrat" = "high"))
+
+# Check it out
+# Note that the new category labels are still in a meaningful,
+# not necessarily alphabetical, order!
+elections |> 
+  count(results_20)
+```
+
+### Example 4 {.unnumbered}
+```{r}
+# Note that we're just piping the data into ggplot instead of writing
+# it as the first argument
+elections |> 
+  ggplot(aes(x = repub_pct_20, fill = state_abbr)) + 
+    geom_density(alpha = 0.5)
+```
+```{r}
+# make a ridge plot b/c so many overlapping density plots 
+
+library(ggridges)
+elections |> 
+  ggplot(aes(x = repub_pct_20, y = state_abbr, fill = historical)) + 
+    geom_density_ridges(alpha =0.6) + 
+    scale_fill_manual(values = c("blue", "purple", "red"))
+```
+### Example 5 {.unnumbered}
+```{r, fig.width=6, fig.height=8}
+# reorder levels based on another variable
+# here, we will reorder states according to their typical GOP support 
+
+elections |>
+  mutate(state_abbr = fct_reorder(state_abbr, repub_pct_20,.fun = "median")) |>
+  ggplot(aes(x=repub_pct_20, y=state_abbr, fill=historical))+
+  geom_density_ridges(alpha = 0.5)+
+  scale_fill_manual(values = c("blue", "purple", "red"))
+
+```
+```{r, fig.width=6, fig.height=8}
+# How did the code change?
+# We put fct_reorder(var, var)
+# And the corresponding output?
+# The ridge plots were ordered by republican support, low to high
+elections |> 
+  mutate(state_abbr = fct_reorder(state_abbr, repub_pct_20, .fun = "median", .desc = TRUE)) |> 
+  ggplot(aes(x = repub_pct_20, y = state_abbr, fill = historical)) + 
+    geom_density_ridges(alpha=0.5) + 
+    scale_fill_manual(values = c("blue", "purple", "red"))
+```
+
