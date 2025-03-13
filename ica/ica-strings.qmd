@@ -1,6 +1,289 @@
 ---
-title: "ica-strings"
+title: "Strings"
 format: html
 ---
 
 Use this file for practice with the **Strings** in-class activity. Refer to the class website for details.
+
+## Examples {.unnumbered}
+
+### Example 1 {.unnumbered}
+
+```{r}
+library(tidyverse)
+
+classes <- data.frame(
+  sem        = c("SP2023", "FA2023", "SP2024"),
+  area       = c("History", "Math", "Anthro"),
+  enroll     = c("30 - people", "20 - people", "25 - people"),
+  instructor = c("Ernesto Capello", "Lori Ziegelmeier", "Arjun Guneratne")
+)
+
+classes
+```
+```{r}
+# Define a new variable "num" that adds up the number of characters in the area label
+classes |>
+  mutate(num = str_length(area))
+```
+```{r}
+# Change the areas to "history", "math", "anthro" instead of "History", "Math", "Anthro"
+classes |>
+  mutate(area = str_to_lower(area))
+
+```
+
+```{r}
+# Create a variable that id's which courses were taught in spring
+classes |>
+  mutate(spring = str_detect(sem, "2023"))
+
+```
+
+```{r}
+# Change the semester labels to "fall2023", "spring2024", "spring2023"
+classes |>
+  mutate(sem = str_replace(sem, "FA", "fall"),
+         sem = str_replace(sem, "SP", "spring"))
+
+```
+```{r}
+# In the enroll variable, change all e's to 3's (just because?)
+classes |>
+  mutate(enroll = str_replace_all(enroll, "3", "e"))
+
+```
+```{r}
+# Use sem to create 2 new variables, one with only the semester (SP/FA) and 1 with the year
+
+```
+
+# Example 2 {.unnumbered}
+```{r}
+# say we only want spring courses
+
+# How can we do this after mutating?
+classes |> 
+  mutate(spring = str_detect(sem, "SP")) |>
+  filter(spring =="TRUE")
+
+# We don't have to mutate first!
+classes |> 
+  filter(str_detect(sem, "SP"))
+
+# Yet another way
+classes |> 
+  filter(!str_detect(sem, "FA"))
+```
+
+
+### Example 3 {.unnumbered}
+Suppose we wanted to get separate columns for the first and last names of each course instructor in classes. Try doing this using str_sub(). But don’t try too long! Explain what trouble you ran into.
+
+the instructors names don't have any characters in common...so we couldn't easily seperate them by first and last name.
+
+
+### Example 4 {.unnumbered}
+
+```{r}
+# use seperate
+classes |> 
+  separate(instructor, c("first", "last"), sep = " ")
+
+# Sometimes the function can "intuit" how we want to separate the variable
+classes |> 
+  separate(instructor, c("first", "last"))
+```
+```{r}
+# a. Separate enroll into 2 separate columns: students and people.
+classes |> 
+  separate(enroll, c("students", "people"), sep = "-")
+```
+
+b. We separated sem into semester and year above using str_sub(). Why would this be hard using separate()?
+* this would be hard because there's no character seperating the semester and year components of sem
+
+```{r}
+# Optional: When we want to split a column into 2+ new columns (or do other types of string processing), but there’s no consistent pattern by which to do this, we can use regular expressions 
+
+# (?<=[SP|FA]): any character *before* the split point is a "SP" or "FA"
+# (?=2): the first character *after* the split point is a 2
+classes |> 
+  separate(sem, 
+          c("semester", "year"),
+          "(?<=[SP|FA])(?=2)")
+
+
+# More general:
+# (?<=[a-zA-Z]): any character *before* the split point is a lower or upper case letter
+# (?=[0-9]): the first character *after* the split point is number
+classes |> 
+  separate(sem, 
+          c("semester", "year"),
+          "(?<=[A-Z])(?=[0-9])")
+```
+
+
+## Exercises {.unnumbered}
+
+### Exercise 1 {.unnumbered}
+```{r}
+courses <- read.csv("https://mac-stat.github.io/data/registrar.csv")
+
+# Check it out
+head(courses)
+```
+
+```{r}
+# Construct a table that indicates the number of classes offered in each day/time slot
+# Print only the 6 most popular time slots
+
+courses |>
+  group_by(days, time) |>
+  summarize(n = n()) |>
+  arrange(desc(n)) |>
+  head()
+```
+
+### Exercise 2 {.unnumbered}
+
+```{r}
+courses_clean <- courses |>
+  separate(avail_max, c("avail", "max"), sep = " / ") |>
+  mutate(max = as.numeric(max), 
+         avail = as.numeric(avail)) |>
+  mutate(enroll = max - avail) |>
+  separate(number, c("dept", "number"), sep = " ") |>
+  separate(number, c("number", "section"), sep = "-")
+
+head(courses_clean)
+```
+
+### Exercise 3 {.unnumbered}
+```{r}
+# Identify the 6 departments that offered the most sections
+courses_clean |>
+  group_by(dept) |>
+  summarize(n = n()) |>
+  arrange(desc(n))
+
+
+# Identify the 6 departments with the longest average course titles
+courses_clean |>
+  mutate(length = str_length(name)) |>
+  group_by(dept) |>
+  summarize(average_title = mean(length)) |>
+  arrange(desc(average_title)) |>
+  head(6)
+
+
+```
+
+### Exercise 4 {.unnumbered}
+
+```{r}
+# part a
+# courses taught by Alicia Johnson
+
+courses_clean |>
+  filter(instructor == "Alicia Johnson")
+
+
+# part b
+# create a new dataset with only STAT sections
+
+stat <- courses_clean |>
+  filter(dept == "STAT") |>
+  mutate(name = str_replace(name, "Introduction to", ""),
+         name = str_replace_all(name, "Statistical", "Stat")) |>
+  separate(time, c("start_time", "end_time"), sep = " - ") |>
+  select("number", "name", "start_time", "enroll")
+
+head(stat)
+```
+
+### Exercise 5 {.unnumbered}
+
+```{r}
+enrollments <- courses_clean |>
+  filter(dept != "PE", dept != "INTD") |>
+  filter(!(dept == "MUSI" & as.numeric(number) < 100),
+         !(dept == "THDA" & as.numeric(number) < 100)) |>
+  mutate(lab = str_detect(section, "L")) |>
+  filter(lab == "FALSE") |>
+  select(-"lab")
+
+```
+
+### Exercise 6 {.unnumbered}
+
+```{r, fig.width=18, fig.height=12}
+# explore enrollments by department
+
+# which department has the highest average course number?
+enrollments |>
+  mutate(number = as.numeric(number)) |>
+  group_by(dept) |>
+  summarize(average_number = round(mean(number))) |>
+  arrange(desc(average_number)) |>
+  mutate(dept = fct_reorder(dept, average_number)) |>
+  ggplot(aes(x = dept, y= average_number))+
+  geom_col()+
+  labs(title = "What is the average course number per department?")
+
+
+```
+### Exercise 7 {.unnumbered}
+```{r}
+# filter out cross-listed courses
+enrollments |>
+  filter(dept %in% c("STAT", "COMP"), number == 112, section == "01")
+
+enrollments_2 <- enrollments |>
+  distinct(days, time, instructor, .keep_all = TRUE)
+
+# NOTE: By default this keeps the first department alphabetically
+# That's fine because we won't use this to analyze department enrollments!
+enrollments_2 |>
+  filter(instructor == "Brianna Heggeseth", name == "Introduction to Data Science")
+```
+```{r}
+# which instructor has the most students?
+
+enrollments_2 |>
+  group_by(instructor, dept) |>
+  mutate(section = as.numeric(section)) |>
+  summarize(n_students = sum(enroll),
+            n_courses = n(),
+            class_avg = mean(enroll)) |>
+  mutate(n_courses = as.factor(n_courses)) |>
+  mutate(n_courses = fct_relevel(n_courses, c("1","2","3"))) |>
+  ggplot(aes(x=n_courses, y= class_avg))+
+    geom_boxplot()+
+  stat_summary(
+    aes(label = round(after_stat(y), 1)),
+    geom = "text", 
+    fun = \(y) { o <- boxplot.stats(y)$out; if(length(o) == 0) NA else o },
+    hjust = -1
+  )
+
+
+  
+  
+```
+### Extra practice {.unnumbered}
+
+```{r}
+# Make a bar plot showing the number of night courses by day of the week
+# Use courses_clean
+
+courses_clean |>
+  group_by(time, days) |>
+  separate(time, c("start", "end"), sep = "-") |>
+  mutate(night = str_detect(start, "7:00")) |>
+  mutate(days = as.factor(days)) |>
+  filter(night == "TRUE") |>
+  ggplot(aes(x=days, fill = dept))+
+  geom_bar(position = "stack")
+```
+
