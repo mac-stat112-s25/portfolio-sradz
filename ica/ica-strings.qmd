@@ -5,9 +5,9 @@ format: html
 
 Use this file for practice with the **Strings** in-class activity. Refer to the class website for details.
 
-## Examples {.unnumbered}
+# Examples {.unnumbered}
 
-### Example 1 {.unnumbered}
+## Example 1 {.unnumbered}
 
 ```{r}
 library(tidyverse)
@@ -58,7 +58,7 @@ classes |>
 
 ```
 
-# Example 2 {.unnumbered}
+## Example 2 {.unnumbered}
 ```{r}
 # say we only want spring courses
 
@@ -77,13 +77,13 @@ classes |>
 ```
 
 
-### Example 3 {.unnumbered}
+## Example 3 {.unnumbered}
 Suppose we wanted to get separate columns for the first and last names of each course instructor in classes. Try doing this using str_sub(). But don’t try too long! Explain what trouble you ran into.
 
 the instructors names don't have any characters in common...so we couldn't easily seperate them by first and last name.
 
 
-### Example 4 {.unnumbered}
+## Example 4 {.unnumbered}
 
 ```{r}
 # use seperate
@@ -124,9 +124,9 @@ classes |>
 ```
 
 
-## Exercises {.unnumbered}
+# Exercises {.unnumbered}
 
-### Exercise 1 {.unnumbered}
+## Exercise 1 {.unnumbered}
 ```{r}
 courses <- read.csv("https://mac-stat.github.io/data/registrar.csv")
 
@@ -145,7 +145,7 @@ courses |>
   head()
 ```
 
-### Exercise 2 {.unnumbered}
+## Exercise 2 {.unnumbered}
 
 ```{r}
 courses_clean <- courses |>
@@ -159,7 +159,7 @@ courses_clean <- courses |>
 head(courses_clean)
 ```
 
-### Exercise 3 {.unnumbered}
+## Exercise 3 {.unnumbered}
 ```{r}
 # Identify the 6 departments that offered the most sections
 courses_clean |>
@@ -179,7 +179,7 @@ courses_clean |>
 
 ```
 
-### Exercise 4 {.unnumbered}
+## Exercise 4 {.unnumbered}
 
 ```{r}
 # part a
@@ -202,7 +202,7 @@ stat <- courses_clean |>
 head(stat)
 ```
 
-### Exercise 5 {.unnumbered}
+## Exercise 5 {.unnumbered}
 
 ```{r}
 enrollments <- courses_clean |>
@@ -215,7 +215,7 @@ enrollments <- courses_clean |>
 
 ```
 
-### Exercise 6 {.unnumbered}
+## Exercise 6 {.unnumbered}
 
 ```{r, fig.width=18, fig.height=12}
 # explore enrollments by department
@@ -233,7 +233,7 @@ enrollments |>
 
 
 ```
-### Exercise 7 {.unnumbered}
+## Exercise 7 {.unnumbered}
 ```{r}
 # filter out cross-listed courses
 enrollments |>
@@ -271,7 +271,7 @@ enrollments_2 |>
   
   
 ```
-### Extra practice {.unnumbered}
+## Extra practice {.unnumbered}
 
 ```{r}
 # Make a bar plot showing the number of night courses by day of the week
@@ -283,7 +283,7 @@ courses_clean |>
   mutate(night = str_detect(start, "7:00")) |>
   mutate(days = as.factor(days)) |>
   filter(night == "TRUE") |>
-  ggplot(aes(x=days, fill = dept))+
-  geom_bar(position = "stack")
+  ggplot(aes(x=days))+
+  geom_bar()
 ```
 
