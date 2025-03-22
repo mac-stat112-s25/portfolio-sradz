@@ -293,13 +293,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <a href="#examples" id="toc-examples" class="nav-link active" data-scroll-target="#examples">Examples</a>
   <ul class="collapse">
 <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example 1</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example 2</a></li>
+  <li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3">Example 3</a></li>
+  <li><a href="#example-4" id="toc-example-4" class="nav-link" data-scroll-target="#example-4">Example 4</a></li>
   </ul>
 </li>
-  <li>
-<a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example 2</a>
-  <ul class="collapse">
-<li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3">Example 3</a></li>
-  <li><a href="#example-4" id="toc-example-4" class="nav-link" data-scroll-target="#example-4">Example 4</a></li>
   <li>
 <a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a>
   <ul class="collapse">
@@ -311,8 +309,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
   <li><a href="#exercise-7" id="toc-exercise-7" class="nav-link" data-scroll-target="#exercise-7">Exercise 7</a></li>
   <li><a href="#extra-practice" id="toc-extra-practice" class="nav-link" data-scroll-target="#extra-practice">Extra practice</a></li>
-  </ul>
-</li>
   </ul>
 </li>
   </ul></nav>
@@ -336,8 +332,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </header><p>Use this file for practice with the <strong>Strings</strong> in-class activity. Refer to the class website for details.</p>
-<section id="examples" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="examples">Examples</h2>
-<section id="example-1" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="example-1">Example 1</h3>
+<section id="examples" class="level1 unnumbered"><h1 class="unnumbered">Examples</h1>
+<section id="example-1" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="example-1">Example 1</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -426,7 +422,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Use sem to create 2 new variables, one with only the semester (SP/FA) and 1 with the year</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section></section><section id="example-2" class="level1 unnumbered"><h1 class="unnumbered">Example 2</h1>
+</section><section id="example-2" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="example-2">Example 2</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># say we only want spring courses</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a></span>
@@ -456,10 +452,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 2 SP2024  Anthro 25 - people Arjun Guneratne</code></pre>
 </div>
 </div>
-<section id="example-3" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="example-3">Example 3</h3>
+</section><section id="example-3" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="example-3">Example 3</h2>
 <p>Suppose we wanted to get separate columns for the first and last names of each course instructor in classes. Try doing this using str_sub(). But don’t try too long! Explain what trouble you ran into.</p>
 <p>the instructors names don’t have any characters in common…so we couldn’t easily seperate them by first and last name.</p>
-</section><section id="example-4" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="example-4">Example 4</h3>
+</section><section id="example-4" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="example-4">Example 4</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># use seperate</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a>classes <span class="sc">|&gt;</span> </span>
@@ -526,8 +522,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 3       SP 2024  Anthro 25 - people  Arjun Guneratne</code></pre>
 </div>
 </div>
-</section><section id="exercises" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="exercises">Exercises</h2>
-<section id="exercise-1" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-1">Exercise 1</h3>
+</section></section><section id="exercises" class="level1 unnumbered"><h1 class="unnumbered">Exercises</h1>
+<section id="exercise-1" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="exercise-1">Exercise 1</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>courses <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/registrar.csv"</span>)</span>
 <span id="cb32-2"><a href="#cb32-2"></a></span>
@@ -576,7 +572,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 6 " T R " 1:20 - 2:50 pm      59</code></pre>
 </div>
 </div>
-</section><section id="exercise-2" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise 2</h3>
+</section><section id="exercise-2" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise 2</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>courses_clean <span class="ot">&lt;-</span> courses <span class="sc">|&gt;</span></span>
 <span id="cb37-2"><a href="#cb37-2"></a>  <span class="fu">separate</span>(avail_max, <span class="fu">c</span>(<span class="st">"avail"</span>, <span class="st">"max"</span>), <span class="at">sep =</span> <span class="st">" / "</span>) <span class="sc">|&gt;</span></span>
@@ -604,7 +600,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 6   W   7:00 - 10:00 pm  MAIN 010         Walter Greason    -1  15     16</code></pre>
 </div>
 </div>
-</section><section id="exercise-3" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
+</section><section id="exercise-3" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a><span class="co"># Identify the 6 departments that offered the most sections</span></span>
 <span id="cb39-2"><a href="#cb39-2"></a>courses_clean <span class="sc">|&gt;</span></span>
@@ -646,7 +642,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 6 AMST           37.3</code></pre>
 </div>
 </div>
-</section><section id="exercise-4" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h3>
+</section><section id="exercise-4" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># part a</span></span>
 <span id="cb43-2"><a href="#cb43-2"></a><span class="co"># courses taught by Alicia Johnson</span></span>
@@ -684,7 +680,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 6    155  Stat Modeling       9:40     24</code></pre>
 </div>
 </div>
-</section><section id="exercise-5" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-5">Exercise 5</h3>
+</section><section id="exercise-5" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="exercise-5">Exercise 5</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>enrollments <span class="ot">&lt;-</span> courses_clean <span class="sc">|&gt;</span></span>
 <span id="cb47-2"><a href="#cb47-2"></a>  <span class="fu">filter</span>(dept <span class="sc">!=</span> <span class="st">"PE"</span>, dept <span class="sc">!=</span> <span class="st">"INTD"</span>) <span class="sc">|&gt;</span></span>
@@ -694,7 +690,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb47-6"><a href="#cb47-6"></a>  <span class="fu">filter</span>(lab <span class="sc">==</span> <span class="st">"FALSE"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb47-7"><a href="#cb47-7"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="st">"lab"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="exercise-6" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-6">Exercise 6</h3>
+</section><section id="exercise-6" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="exercise-6">Exercise 6</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># explore enrollments by department</span></span>
 <span id="cb48-2"><a href="#cb48-2"></a></span>
@@ -715,7 +711,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section><section id="exercise-7" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-7">Exercise 7</h3>
+</section><section id="exercise-7" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="exercise-7">Exercise 7</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="co"># filter out cross-listed courses</span></span>
 <span id="cb49-2"><a href="#cb49-2"></a>enrollments <span class="sc">|&gt;</span></span>
@@ -785,7 +781,7 @@ Caused by warning:
 </div>
 </div>
 </div>
-</section><section id="extra-practice" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="extra-practice">Extra practice</h3>
+</section><section id="extra-practice" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="extra-practice">Extra practice</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># Make a bar plot showing the number of night courses by day of the week</span></span>
 <span id="cb57-2"><a href="#cb57-2"></a><span class="co"># Use courses_clean</span></span>
@@ -796,8 +792,8 @@ Caused by warning:
 <span id="cb57-7"><a href="#cb57-7"></a>  <span class="fu">mutate</span>(<span class="at">night =</span> <span class="fu">str_detect</span>(start, <span class="st">"7:00"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb57-8"><a href="#cb57-8"></a>  <span class="fu">mutate</span>(<span class="at">days =</span> <span class="fu">as.factor</span>(days)) <span class="sc">|&gt;</span></span>
 <span id="cb57-9"><a href="#cb57-9"></a>  <span class="fu">filter</span>(night <span class="sc">==</span> <span class="st">"TRUE"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb57-10"><a href="#cb57-10"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>days, <span class="at">fill =</span> dept))<span class="sc">+</span></span>
-<span id="cb57-11"><a href="#cb57-11"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"stack"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb57-10"><a href="#cb57-10"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>days))<span class="sc">+</span></span>
+<span id="cb57-11"><a href="#cb57-11"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Expected 2 pieces. Missing pieces filled with `NA` in 1 rows [56].</code></pre>
 </div>
@@ -812,7 +808,7 @@ Caused by warning:
 
 <!-- -->
 
-</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1446,9 +1442,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb59-5"><a href="#cb59-5"></a></span>
 <span id="cb59-6"><a href="#cb59-6"></a>Use this file for practice with the **Strings** in-class activity. Refer to the class website for details.</span>
 <span id="cb59-7"><a href="#cb59-7"></a></span>
-<span id="cb59-8"><a href="#cb59-8"></a><span class="fu">## Examples {.unnumbered}</span></span>
+<span id="cb59-8"><a href="#cb59-8"></a><span class="fu"># Examples {.unnumbered}</span></span>
 <span id="cb59-9"><a href="#cb59-9"></a></span>
-<span id="cb59-10"><a href="#cb59-10"></a><span class="fu">### Example 1 {.unnumbered}</span></span>
+<span id="cb59-10"><a href="#cb59-10"></a><span class="fu">## Example 1 {.unnumbered}</span></span>
 <span id="cb59-11"><a href="#cb59-11"></a></span>
 <span id="cb59-14"><a href="#cb59-14"></a><span class="in">```{r}</span></span>
 <span id="cb59-15"><a href="#cb59-15"></a><span class="fu">library</span>(tidyverse)</span>
@@ -1499,7 +1495,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb59-72"><a href="#cb59-72"></a></span>
 <span id="cb59-73"><a href="#cb59-73"></a><span class="in">```</span></span>
 <span id="cb59-74"><a href="#cb59-74"></a></span>
-<span id="cb59-75"><a href="#cb59-75"></a><span class="fu"># Example 2 {.unnumbered}</span></span>
+<span id="cb59-75"><a href="#cb59-75"></a><span class="fu">## Example 2 {.unnumbered}</span></span>
 <span id="cb59-78"><a href="#cb59-78"></a><span class="in">```{r}</span></span>
 <span id="cb59-79"><a href="#cb59-79"></a><span class="co"># say we only want spring courses</span></span>
 <span id="cb59-80"><a href="#cb59-80"></a></span>
@@ -1518,13 +1514,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb59-93"><a href="#cb59-93"></a><span class="in">```</span></span>
 <span id="cb59-94"><a href="#cb59-94"></a></span>
 <span id="cb59-95"><a href="#cb59-95"></a></span>
-<span id="cb59-96"><a href="#cb59-96"></a><span class="fu">### Example 3 {.unnumbered}</span></span>
+<span id="cb59-96"><a href="#cb59-96"></a><span class="fu">## Example 3 {.unnumbered}</span></span>
 <span id="cb59-97"><a href="#cb59-97"></a>Suppose we wanted to get separate columns for the first and last names of each course instructor in classes. Try doing this using str_sub(). But don’t try too long! Explain what trouble you ran into.</span>
 <span id="cb59-98"><a href="#cb59-98"></a></span>
 <span id="cb59-99"><a href="#cb59-99"></a>the instructors names don't have any characters in common...so we couldn't easily seperate them by first and last name.</span>
 <span id="cb59-100"><a href="#cb59-100"></a></span>
 <span id="cb59-101"><a href="#cb59-101"></a></span>
-<span id="cb59-102"><a href="#cb59-102"></a><span class="fu">### Example 4 {.unnumbered}</span></span>
+<span id="cb59-102"><a href="#cb59-102"></a><span class="fu">## Example 4 {.unnumbered}</span></span>
 <span id="cb59-103"><a href="#cb59-103"></a></span>
 <span id="cb59-106"><a href="#cb59-106"></a><span class="in">```{r}</span></span>
 <span id="cb59-107"><a href="#cb59-107"></a><span class="co"># use seperate</span></span>
@@ -1565,9 +1561,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb59-146"><a href="#cb59-146"></a><span class="in">```</span></span>
 <span id="cb59-147"><a href="#cb59-147"></a></span>
 <span id="cb59-148"><a href="#cb59-148"></a></span>
-<span id="cb59-149"><a href="#cb59-149"></a><span class="fu">## Exercises {.unnumbered}</span></span>
+<span id="cb59-149"><a href="#cb59-149"></a><span class="fu"># Exercises {.unnumbered}</span></span>
 <span id="cb59-150"><a href="#cb59-150"></a></span>
-<span id="cb59-151"><a href="#cb59-151"></a><span class="fu">### Exercise 1 {.unnumbered}</span></span>
+<span id="cb59-151"><a href="#cb59-151"></a><span class="fu">## Exercise 1 {.unnumbered}</span></span>
 <span id="cb59-154"><a href="#cb59-154"></a><span class="in">```{r}</span></span>
 <span id="cb59-155"><a href="#cb59-155"></a>courses <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/registrar.csv"</span>)</span>
 <span id="cb59-156"><a href="#cb59-156"></a></span>
@@ -1586,7 +1582,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb59-171"><a href="#cb59-171"></a>  <span class="fu">head</span>()</span>
 <span id="cb59-172"><a href="#cb59-172"></a><span class="in">```</span></span>
 <span id="cb59-173"><a href="#cb59-173"></a></span>
-<span id="cb59-174"><a href="#cb59-174"></a><span class="fu">### Exercise 2 {.unnumbered}</span></span>
+<span id="cb59-174"><a href="#cb59-174"></a><span class="fu">## Exercise 2 {.unnumbered}</span></span>
 <span id="cb59-175"><a href="#cb59-175"></a></span>
 <span id="cb59-178"><a href="#cb59-178"></a><span class="in">```{r}</span></span>
 <span id="cb59-179"><a href="#cb59-179"></a>courses_clean <span class="ot">&lt;-</span> courses <span class="sc">|&gt;</span></span>
@@ -1600,7 +1596,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb59-187"><a href="#cb59-187"></a><span class="fu">head</span>(courses_clean)</span>
 <span id="cb59-188"><a href="#cb59-188"></a><span class="in">```</span></span>
 <span id="cb59-189"><a href="#cb59-189"></a></span>
-<span id="cb59-190"><a href="#cb59-190"></a><span class="fu">### Exercise 3 {.unnumbered}</span></span>
+<span id="cb59-190"><a href="#cb59-190"></a><span class="fu">## Exercise 3 {.unnumbered}</span></span>
 <span id="cb59-193"><a href="#cb59-193"></a><span class="in">```{r}</span></span>
 <span id="cb59-194"><a href="#cb59-194"></a><span class="co"># Identify the 6 departments that offered the most sections</span></span>
 <span id="cb59-195"><a href="#cb59-195"></a>courses_clean <span class="sc">|&gt;</span></span>
@@ -1620,7 +1616,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb59-209"><a href="#cb59-209"></a></span>
 <span id="cb59-210"><a href="#cb59-210"></a><span class="in">```</span></span>
 <span id="cb59-211"><a href="#cb59-211"></a></span>
-<span id="cb59-212"><a href="#cb59-212"></a><span class="fu">### Exercise 4 {.unnumbered}</span></span>
+<span id="cb59-212"><a href="#cb59-212"></a><span class="fu">## Exercise 4 {.unnumbered}</span></span>
 <span id="cb59-213"><a href="#cb59-213"></a></span>
 <span id="cb59-216"><a href="#cb59-216"></a><span class="in">```{r}</span></span>
 <span id="cb59-217"><a href="#cb59-217"></a><span class="co"># part a</span></span>
@@ -1643,7 +1639,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb59-234"><a href="#cb59-234"></a><span class="fu">head</span>(stat)</span>
 <span id="cb59-235"><a href="#cb59-235"></a><span class="in">```</span></span>
 <span id="cb59-236"><a href="#cb59-236"></a></span>
-<span id="cb59-237"><a href="#cb59-237"></a><span class="fu">### Exercise 5 {.unnumbered}</span></span>
+<span id="cb59-237"><a href="#cb59-237"></a><span class="fu">## Exercise 5 {.unnumbered}</span></span>
 <span id="cb59-238"><a href="#cb59-238"></a></span>
 <span id="cb59-241"><a href="#cb59-241"></a><span class="in">```{r}</span></span>
 <span id="cb59-242"><a href="#cb59-242"></a>enrollments <span class="ot">&lt;-</span> courses_clean <span class="sc">|&gt;</span></span>
@@ -1656,7 +1652,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb59-249"><a href="#cb59-249"></a></span>
 <span id="cb59-250"><a href="#cb59-250"></a><span class="in">```</span></span>
 <span id="cb59-251"><a href="#cb59-251"></a></span>
-<span id="cb59-252"><a href="#cb59-252"></a><span class="fu">### Exercise 6 {.unnumbered}</span></span>
+<span id="cb59-252"><a href="#cb59-252"></a><span class="fu">## Exercise 6 {.unnumbered}</span></span>
 <span id="cb59-253"><a href="#cb59-253"></a></span>
 <span id="cb59-254"><a href="#cb59-254"></a><span class="in">```{r, fig.width=18, fig.height=12}</span></span>
 <span id="cb59-255"><a href="#cb59-255"></a><span class="in"># explore enrollments by department</span></span>
@@ -1674,7 +1670,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb59-267"><a href="#cb59-267"></a></span>
 <span id="cb59-268"><a href="#cb59-268"></a></span>
 <span id="cb59-269"><a href="#cb59-269"></a><span class="in">```</span></span>
-<span id="cb59-270"><a href="#cb59-270"></a><span class="fu">### Exercise 7 {.unnumbered}</span></span>
+<span id="cb59-270"><a href="#cb59-270"></a><span class="fu">## Exercise 7 {.unnumbered}</span></span>
 <span id="cb59-273"><a href="#cb59-273"></a><span class="in">```{r}</span></span>
 <span id="cb59-274"><a href="#cb59-274"></a><span class="co"># filter out cross-listed courses</span></span>
 <span id="cb59-275"><a href="#cb59-275"></a>enrollments <span class="sc">|&gt;</span></span>
@@ -1712,7 +1708,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb59-309"><a href="#cb59-309"></a>  </span>
 <span id="cb59-310"><a href="#cb59-310"></a>  </span>
 <span id="cb59-311"><a href="#cb59-311"></a><span class="in">```</span></span>
-<span id="cb59-312"><a href="#cb59-312"></a><span class="fu">### Extra practice {.unnumbered}</span></span>
+<span id="cb59-312"><a href="#cb59-312"></a><span class="fu">## Extra practice {.unnumbered}</span></span>
 <span id="cb59-313"><a href="#cb59-313"></a></span>
 <span id="cb59-316"><a href="#cb59-316"></a><span class="in">```{r}</span></span>
 <span id="cb59-317"><a href="#cb59-317"></a><span class="co"># Make a bar plot showing the number of night courses by day of the week</span></span>
@@ -1724,8 +1720,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb59-323"><a href="#cb59-323"></a>  <span class="fu">mutate</span>(<span class="at">night =</span> <span class="fu">str_detect</span>(start, <span class="st">"7:00"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb59-324"><a href="#cb59-324"></a>  <span class="fu">mutate</span>(<span class="at">days =</span> <span class="fu">as.factor</span>(days)) <span class="sc">|&gt;</span></span>
 <span id="cb59-325"><a href="#cb59-325"></a>  <span class="fu">filter</span>(night <span class="sc">==</span> <span class="st">"TRUE"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb59-326"><a href="#cb59-326"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>days, <span class="at">fill =</span> dept))<span class="sc">+</span></span>
-<span id="cb59-327"><a href="#cb59-327"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"stack"</span>)</span>
+<span id="cb59-326"><a href="#cb59-326"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>days))<span class="sc">+</span></span>
+<span id="cb59-327"><a href="#cb59-327"></a>  <span class="fu">geom_bar</span>()</span>
 <span id="cb59-328"><a href="#cb59-328"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
