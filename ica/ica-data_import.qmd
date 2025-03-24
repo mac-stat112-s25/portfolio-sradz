@@ -1,0 +1,141 @@
+---
+title: "Data Import"
+format: html
+---
+
+# Exercises {.unnumbered}
+
+## Exercise 1
+
+### Part b
+* the dataset is from Kaggle, but the data itself is from TMBd
+* metadata on 5000 movies (ie homepage, id, original title, overview, popularity, production companies, production countries, release date, spoken languages, status, tagline, vote_average)
+* generated from The Movie Database API
+
+## Exercise 2
+```{r}
+# part a: absolute path
+library(tidyverse)
+imdb_messy <- read_csv("C:\\Users\\sarah\\OneDrive\\Documents\\GitHub\\portfolio-sradz\\data\\imdb_5000_messy.csv")
+
+```
+```{r}
+# part b
+getwd()
+```
+
+```{r}
+# part c
+imdb_temp <- read_csv("..\\data\\imdb_5000_messy.csv")
+```
+
+```{r}
+# part d
+# Try importing only the first 5 rows
+read_csv("..\\data\\imdb_5000_messy.csv", n_max = 5)
+```
+## Exercise 3 {.unnumbered}
+```{r}
+# part b
+imdb_messy |>
+  mutate(across(where(is.character), as.factor)) |>  # convert characters to factors in order to summarize
+  summary()
+```
+* What type of info is provided on quantitative variables?
+  * Stuff about the movie actors/directors or plot or movie itself: title, color, director, actor names, genre, plot keywords, lagnuage 
+What type of info is provided on categorical variables?
+  * Info about movie statistics: revenue, rating on IMDB, facebook likes
+What stands out to you in these summaries? Is there anything you’d need to clean before using this data?
+  * some inconsistencies with spelling or formatting (ie different ways of saying color--COLOR, color, Color)
+  * a decent amount of NA's or data missing
+
+## Exercise 4
+
+* the formatting of categories within the variable "color" isn't consistent 
+* "color" has 6 categories (ie color, Color, COLOR or B&W, Black and White, and NA)
+* the largest is Color, but there are a few "COLOR" or "color" movies
+
+```{r}
+imdb_messy |>
+  count(color)
+```
+
+
+## Exercise 5
+
+```{r}
+# clean using factors
+imdb_temp <- imdb_messy |>
+  mutate(color = fct_recode(color, 
+                            "Color" = "COLOR",
+                            "Color" = "color",
+                            "Black_White" = "Black and White",
+                            "Black_White" = "B&W")) 
+
+imdb_temp |>
+  count(color)
+```
+```{r}
+# clean using strings!
+imdb_temp <- imdb_messy |>
+  mutate(color = str_to_lower(color),
+         color = str_replace(color, "black and white", "Black_white"),
+         color = str_replace(color, "b&w", "Black_white"),
+         color = str_replace(color, "color", "Color"))
+
+imdb_temp |>
+  count(color)
+```
+
+## Exercise 6
+```{r}
+# Count the total number of rows in imdb_messy
+count(imdb_messy)
+
+# Then count the number of NAs in each column
+colSums(is.na(imdb_messy))
+
+# Then count the number of NAs in a specific column
+imdb_messy |> 
+filter(is.na(actor_1_facebook_likes))
+```
+
+## Exercise 7
+
+```{r}
+# removed the NA's
+imdb_temp |>
+  summarize(avg_duration = mean(duration, na.rm=TRUE))
+```
+
+```{r}
+# drop_na() gets rid of any data entries that contain an "NA"
+# gets rid of entries that could be helpful (ie NA for a different variable, but not for the one we care about, would be removed)
+imdb_temp <- drop_na(imdb_messy)
+nrow(imdb_temp)
+
+```
+
+```{r}
+ggplot(imdb_messy, aes(x = duration, fill = color)) + 
+  geom_density()
+```
+```{r}
+imdb_temp <- imdb_messy |>
+  filter(!is.na(duration), !is.na(color))
+
+nrow(imdb_temp) # now we have 5010 movies! (as opposed to 3756 from above when we used drop_na()
+
+
+# plot (no grey "NA" graph)
+ggplot(imdb_temp, aes(x=duration, fill = color))+
+  geom_density()
+```
+```{r}
+imdb_temp <- imdb_messy |>
+  mutate(actor_1_facebook_likes = replace_na(actor_1_facebook_likes, 0))
+
+imdb_temp |>
+  summarize(sum(is.na(actor_1_facebook_likes)))
+```
+

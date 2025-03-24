@@ -34,22 +34,20 @@ book:
       - bw/Summary.qmd
     
 
-    - part: "In-class Activities: Viz"
+    - part: "In-class Activities"
       chapters: 
       - ica/quarto-demo.qmd
       - ica/ica-uni.qmd
       - ica/ica-bi.qmd
       - ica/ica-multi.qmd
       - ica/ica-spatial.qmd
-      
-    - part: "In-class Activities: Wrangling"
-      chapters: 
       - ica/ica-wrangling.qmd
       - ica/ica-dates.qmd
       - ica/ica-reshaping.qmd
       - ica/ica-joining.qmd
       - ica/ica-factors.qmd
       - ica/ica-strings.qmd
+      - ica/ica-data_import.qmd
 
 format:
   html:
