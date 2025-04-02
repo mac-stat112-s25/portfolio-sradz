@@ -34,6 +34,7 @@ book:
       - bw/bw-exam2.qmd
       - bw/Summary.qmd
       - bw/Summary2.qmd
+      - bw/Solo-Project.qmd
     
 
     - part: "In-class Activities"
