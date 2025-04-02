@@ -1,0 +1,71 @@
+---
+title: "Solo Project"
+format: html
+---
+
+
+```{r}
+# load packages and data
+library(tidyverse)
+library(mosaic)
+library(sf)
+library(tigris)
+
+
+elevators <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/main/data/2022/2022-12-06/elevators.csv")
+
+zcta_sf <- zctas(cb = FALSE)
+
+```
+
+  
+
+
+```{r}
+# clean Elevators data
+elevators2 <- elevators |>
+  filter(ZIP_CODE != "0",
+         ZIP_CODE != "99999",
+         `Device Status` == "A",
+         `Device Type` == "Passenger Elevator (P)") |>
+  mutate(ZIP_CODE = str_sub(ZIP_CODE,0,5)) |>
+  group_by(ZIP_CODE) |>
+  mutate(n = n()) 
+
+# mutate ZCTA data
+zcta_sf2 <- zcta_sf |>
+  mutate(zip = ZCTA5CE20) |>
+  select(zip, geometry) 
+ 
+
+# joins datasets
+elevators3 <- elevators2 |>
+  group_by(ZIP_CODE) |>
+  summarize(n = n()) |>
+  left_join(zcta_sf2, join_by(ZIP_CODE == zip)) 
+ 
+
+```
+
+
+
+```{r, fig.width=9, fig.height=7}
+# make the map
+
+elevators3 |>
+  ggplot()+
+  geom_sf(aes(geometry = geometry, fill = n))+
+  theme_dark()+
+  scale_fill_gradientn(name = "Number of \nElevators", colors = c("white","#c1e3a8","darkolivegreen2","darkgreen","#0c360a"), values = scales::rescale(seq(0,5, by = 0.1)))+
+  labs(title = "Passenger Elevators in NYC by Zip Code",
+       subtitle = "Active Elevators only",
+       caption = "Elevator Data from Tidy Tuesday (week of 12/06/2022) || Map Data from US Census Bureau TIGER/Line Shapefiles")+
+  theme(
+    plot.title = element_text(color="green4", face = "bold", size = 25, hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
+    plot.caption = element_text(size = 10))
+
+```
+
+
+
