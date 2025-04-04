@@ -2,13 +2,14 @@
 title: "Exam 2"
 format: html
 ---
-# 2: Setup
+## 2: Setup {.unnumbered}
 ```{r}
 # load packages
 library(tidyverse)
 library(tidytuesdayR)
 library(rnaturalearth)
 library(sf)
+library(mosaic)
 ```
 
 ```{r}
@@ -31,9 +32,10 @@ fc2 |>
 ```
 
 
-# 3: Most Consuming Countries
-** Which 5 countries consume the most food?**
+## 3: Most Consuming Countries {.unnumbered}
+__Research Question:__ **Which 5 countries consume the most food?**
 ```{r}
+#| fig-alt: "Bar Plot showing the five countries with the highest total food consumption."
 fc2 |>
   group_by(country) |>
   summarize(total_consumption = sum(consumption)) |>
@@ -41,22 +43,28 @@ fc2 |>
   mutate(country = fct_reorder(country, total_consumption)) |>
   head(5) |>
   ggplot(aes(x=country, y=total_consumption))+
-  geom_col()
+  geom_col()+
+  labs(x = "Country", y = "Total Consumption",
+       title = "Top 5 Countries by Total Food Consumption",
+       caption = "Data from TidyTuesday (week of 02/18/2020)")
 ```
 
-# 4: Most Consuming Countries of Each Food
+## 4: Most Consuming Countries of Each Food {.unnumbered}
 
-**What are the top 5 countries for each food category?**
+__Reserach Question:__ **What are the top 5 countries for each food category?**
 
 ```{r}
 fc2 |>
   group_by(food_category) |>
-  slice_max(n=5, consumption) 
-
+  slice_max(n=5, consumption) |>
+  ggplot(aes(x=food_category, y = consumption, group = country))+
+  geom_col(position = position_dodge(width = 1), width = 1, fill = "lightblue1", color = "black")+
+  geom_text(aes(label = country, y = consumption*(2/3), group = country, angle = 90),
+             position = position_dodge(width = 1), size = 2, color = "black")
 ```
 
-# 5: Food Consumption
-**What does the consumption of each food look like?**
+## 5: Food Consumption {.unnumbered}
+__Research Question:__ **What does the consumption of each food look like?**
 
 ```{r}
 fc3 <- ne_countries(returnclass = "sf") |>
@@ -70,14 +78,23 @@ fc3 <- ne_countries(returnclass = "sf") |>
               mutate(consumption = (consumption - mean(consumption))/sd(consumption)), join_by(name == country)) |>
   pivot_wider(names_from = food_category, values_from = consumption) |>
   select(-"NA") |>
-  pivot_longer(cols = 3:13, names_to = "food_category", values_to = "consumption")
+  pivot_longer(cols = 3:13, names_to = "food_category", values_to = "consumption") |>
+  mutate(n_category = cut(consumption, breaks = c(-Inf,0,1,2,3,Inf), 
+                                    labels = c("Very Low (-Inf to 0)", "Low (0 to 1)","Medium (1 to 2)","High (2 to 3)", "Very High (3 to Inf)"))) 
 
 ```
 
-```{r}
+```{r, fig.width=10, fig.height=6}
+#| fig-alt: "Choropleth maps showing how the consumption of each food category varies by country. Consumption measurments are standardized as the consumption-mean over the standard deviation and labeled as very low to very high"
 ggplot(fc3) +
-  geom_sf(aes(fill = consumption))+
+  geom_sf(aes(fill = n_category))+
   facet_wrap(~food_category)+
-  theme(legend.position = "bottom")
+  labs(title = "Consumption of Food Categories by Country",
+       subtitle = "Consumption is standardized as [consumption-mean]/std dev for each food category",
+       caption = "Data from TidyTuesday (week of 02/18/2020)")+
+  theme_map()+
+  theme(legend.position = "bottom")+
+  scale_fill_manual(values= c("Very Low (-Inf to 0)" = "#f2ffff", "Low (0 to 1)" = "lightblue", "Medium (1 to 2)" = "lightskyblue", "High (2 to 3)" = "blue4", "Very High (3 to Inf)" = "black"))
+
 ```
 
