@@ -1,10 +1,8 @@
 ---
-title: "Summary"
+title: "Visualization"
 format: html
 ---
 ## Exam 1: Data Viz {.unnumbered}
 ![summary1](Data Visualization Basics-1.png)
 ![summary2](Data-Visualization-Basics-2.png)
 
-## Exam 2: Data Wrangling {.unnumbered}
-![summary3](wrangling_summary-1.png)

@@ -1,0 +1,9 @@
+---
+title: "Wrangling"
+format: html
+---
+
+
+## Exam 2: Data Wrangling {.unnumbered}
+![summary3](wrangling_summary-1.png)
+
