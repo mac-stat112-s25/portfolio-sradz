@@ -5,14 +5,14 @@ format: html
 
 # Exercises {.unnumbered}
 
-## Exercise 1
+## Exercise 1 {.unnumbered}
 
-### Part b
+### Part b {.unnumbered}
 * the dataset is from Kaggle, but the data itself is from TMBd
 * metadata on 5000 movies (ie homepage, id, original title, overview, popularity, production companies, production countries, release date, spoken languages, status, tagline, vote_average)
 * generated from The Movie Database API
 
-## Exercise 2
+## Exercise 2 {.unnumbered}
 ```{r}
 # part a: absolute path
 library(tidyverse)
@@ -49,7 +49,7 @@ What stands out to you in these summaries? Is there anything you’d need to cle
   * some inconsistencies with spelling or formatting (ie different ways of saying color--COLOR, color, Color)
   * a decent amount of NA's or data missing
 
-## Exercise 4
+## Exercise 4 {.unnumbered}
 
 * the formatting of categories within the variable "color" isn't consistent 
 * "color" has 6 categories (ie color, Color, COLOR or B&W, Black and White, and NA)
@@ -61,7 +61,7 @@ imdb_messy |>
 ```
 
 
-## Exercise 5
+## Exercise 5 {.unnumbered}
 
 ```{r}
 # clean using factors
@@ -87,7 +87,7 @@ imdb_temp |>
   count(color)
 ```
 
-## Exercise 6
+## Exercise 6 {.unnumbered}
 ```{r}
 # Count the total number of rows in imdb_messy
 count(imdb_messy)
@@ -100,7 +100,7 @@ imdb_messy |>
 filter(is.na(actor_1_facebook_likes))
 ```
 
-## Exercise 7
+## Exercise 7 {.unnumbered}
 
 ```{r}
 # removed the NA's

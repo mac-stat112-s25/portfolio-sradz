@@ -1,5 +1,11 @@
 ---
 title: "Bivariate Viz"
+
+execute: 
+  echo: false
+  warning: false
+  error: false
+
 ---
 
 Use this file to generate a professional looking **bivariate** visualization.  The visualization will not perfect the first time but you are expected to improve it throughout the semester especially after covering advanced topics such as effective viz.
@@ -19,7 +25,7 @@ ggplot(weather, aes(y=temp3pm, fill=location))+
   labs(title = "Temperatures at 3pm in Three Australian Locations",
        y = "Temperature (*C)",
        fill = "Location",
-       caption = "created by Sarah, data from weatherAUS in the rattle package"
+       caption = "created by Sarah in 2025, data from weatherAUS in the rattle package"
        )+
   theme(plot.title = element_text(hjust=0.5, face="bold"),
         axis.text.x = element_blank(),

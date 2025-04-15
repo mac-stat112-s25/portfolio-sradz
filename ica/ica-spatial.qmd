@@ -4,6 +4,9 @@ title: "Spatial Viz"
 
 Use this file for practice with the **spatial viz** in-class activity.  Refer to the class website for details.
 
+## Warm-Ups {.unnumbered}
+
+### Exercise 1 {.unnumbered}
 ```{r echo = FALSE}
 # load stuff
 library(tidyverse)
@@ -13,7 +16,7 @@ energy <- read.csv("https://mac-stat.github.io/data/MacNaturalGas.csv") |>
 
 ```
 
-
+### Exercise 2 {.unnumbered}
 ```{r}
 # What was range in, and typical, energy used each month, as measured by therms? How does this differ by address?
 ggplot(energy, aes(x=therms))+
@@ -29,6 +32,7 @@ ggplot(energy, aes(x=therms, fill=address))+
 * not entirely sure what the mean or medial is...probably around 100, but would have to calculate
 * Address a and b both have a peak around 50 therms, but it is bigger for address b. Address a's distribution is more bimodal, with a dip around 250 and a second peak near 375 therms.
 
+### Exercise 3 {.unnumbered}
 ```{r}
 # How did energy use (therms) change over time (date) at the two addresses?
 
@@ -40,6 +44,7 @@ ggplot(energy, aes(x=date, y=therms))+
 The plot shows a sinusoidal pattern within each year, where some months have very low energy usage, but other months have high usage. I think this corresponds to the different seasons--winter has high energy usage (heat), but in the summer it's lower (also goes between each year; middle dates)
 :::
 
+### Exercise 4 {.unnumbered}
 ```{r}
 # How did the typical energy use (therms) at the two addresses change before and after they were renovated?
 
@@ -70,7 +75,7 @@ BUT this was explained by a confounding or omitted or lurking variable: month (o
 
 *Thus*, when controlling for date, renovations led to decreased energy use.
 
-## New Exercises 
+## New Exercises {.unnumbered}
 
 ### Exercise 1 {.unnumbered}
 
@@ -256,7 +261,6 @@ ggplot(cma_boundaries) +
   theme_map()
 ```
 
-## Part 3: Choropleth Maps {.unnumbered}
 
 ### Exercise 8 {.unnumbered}
 ```{r}

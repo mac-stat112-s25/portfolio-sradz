@@ -5,9 +5,9 @@ format: html
 
 Use this file for practice with the **joining** in-class activity. Refer to the class website for details.
 
-## Warm-Ups 
+## Warm-Ups {.unnumbered}
 
-### Example 1 
+### Example 1 {.unnumbered}
 ```{r}
 students_1 <- data.frame(
   student = c("A", "B", "C"),
@@ -29,7 +29,7 @@ enrollments_1
 # students_1 exclusively has the variable "student" and enrollments_1 exclusively has the variable "enrollment"
 # also some classes are different between the 2 datasets
 ```
-### Example 2
+### Example 2 {.unnumbered}
 ```{r}
 # using left_join()
 

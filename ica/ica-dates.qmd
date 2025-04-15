@@ -248,7 +248,7 @@ head(daily_births)
 ggplot(daily_births, aes(x=date, y=total_births, color=day))+
   geom_point()
 ```
-### Exercise 7
+### Exercise 7 {.unnumbered}
 ```{r}
 # wrangle and store data, then plot
 penguins_minus_Gentoo <- penguins |>

@@ -1,6 +1,12 @@
 ---
 title: "Exam 1"
 format: html
+
+execute: 
+  echo: false
+  warning: false
+  error: false
+
 ---
 ::: {.callout-note title="Exam 1 Visualization"}
 Research question: **What does the consumption of each food category in each country look like?**
@@ -60,7 +66,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Pork Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
   theme(
     plot.title = element_text(color="salmon3", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -87,7 +93,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Poultry Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
   theme(
     plot.title = element_text(color="pink3", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -113,7 +119,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Beef  Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
   theme(
     plot.title = element_text(color="red4", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -140,7 +146,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Lamb & Goat Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
   theme(
     plot.title = element_text(color="bisque4", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -164,7 +170,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Fish Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
   theme(
     plot.title = element_text(color="#579fcf", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -190,7 +196,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Eggs Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
   theme(
     plot.title = element_text(color="goldenrod3", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -216,7 +222,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Milk & Cheese Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
   theme(
     plot.title = element_text(color="royalblue", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -241,7 +247,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Wheat Product Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
   theme(
     plot.title = element_text(color="burlywood4", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -266,7 +272,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Rice Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
   theme(
     plot.title = element_text(color="green4", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -292,7 +298,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Soybean Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
   theme(
     plot.title = element_text(color="magenta4", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -316,7 +322,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Nuts Consumption by Country",
        subtitle = "includes peanut butter; Measured in kg/person/year \nGrey = No Data",
-       caption = "Data from TidyTuesday project (week of Feb 2, 2020)",
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)",
        fill = "consumption")+
   theme(
     plot.title = element_text(color="orange3", face = "bold", size = 25, hjust = 0.5),

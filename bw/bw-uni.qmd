@@ -1,5 +1,11 @@
 ---
 title: "Univariate Viz"
+
+execute: 
+  echo: false
+  warning: false
+  error: false
+
 ---
 
 Use this file to generate a professional looking **univariate** visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
@@ -14,12 +20,12 @@ elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv"
 
 # Make a ggplot
 ggplot(elections, aes(x=median_rent))+
-  geom_histogram(binwidth = 100, color="black", fill="steelblue3")+
+  geom_histogram(binwidth = 100, color="black", fill="steelblue2")+
   labs(title = "Median Rent in the United States",
        subtitle = "Distribution of the median rent per county",
-       x = "Median Rent ($)",
+       x = "Median Rent ($USD)",
        y = "Number of Counties",
-       caption = "Created by Sarah, Data from 270towin.com")+
+       caption = "Created by Sarah in 2025, Data from 270towin.com")+
   theme_grey()+
   theme(plot.title=element_text(face="bold", size=15),
         plot.caption=element_text(size=8, face="italic"))

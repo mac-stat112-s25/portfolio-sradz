@@ -1,5 +1,11 @@
 ---
 title: "Trivariate Viz"
+
+execute: 
+  echo: false
+  warning: false
+  error: false
+
 ---
 
 Use this file to generate a professional looking **trivariate** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
@@ -23,7 +29,7 @@ ggplot(education, aes(x=expend, y=sat, color=fracCat))+
        x = "Expenditure per pupil (in thousands of dollars)",
        y = "Average total SAT score",
        color = "Percent of students \ntaking the SAT",
-       caption = "Created by Sarah, data from Deborah Lynn Guber and Danny Kaplan")+
+       caption = "Created by Sarah in 2025, data from Deborah Lynn Guber and Danny Kaplan")+
   theme(plot.title = element_text(face = "bold", size=13),
     plot.caption = element_text(face = "italic"), size = 6)+
   scale_color_manual(values = c("darkblue","green3","red3"),

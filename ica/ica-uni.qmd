@@ -4,6 +4,8 @@ title: "Univariate Viz"
 
 Use this file for practice with the **univariate viz** in-class activity.  Refer to the class website for details.
 
+## In-Class Exercises {.unnumbered}
+
 ```{r}
 # Load the package
 library(tidyverse)
@@ -12,7 +14,7 @@ library(tidyverse)
 hikes<- read.csv("https://mac-stat.github.io/data/high_peaks.csv")
 ```
 
-## Exercise 1: Research Questions {.unnumbered}
+### Exercise 1: Research Questions {.unnumbered}
 ```{r}
 head(hikes)
 ```
@@ -22,13 +24,15 @@ a.  What features would we like a visualization of the *categorical* difficulty 
 b.  What about a visualization of the *quantitative* `elevation` variable?
 - the number of peaks within a certain threshold (eg 4500-5000, 5001-5500, etc)
 
-## Exercise 2: Load Tidyverse {.unnumbered}
+
+### Exercise 2: Load Tidyverse {.unnumbered}
 ```{r}
 # Use the ggplot function
 ggplot(hikes, aes(x = rating))
 
 ```
-## Exercise 3: Bar Chart of Ratings - Part 1 {.unnumbered}
+
+### Exercise 3: Bar Chart of Ratings - Part 1 {.unnumbered}
 ```{r}
 # Adds a bar chart with the number/count of hikes of each difficulty [geom_bar()]
 ggplot(hikes, aes(x = rating)) +
@@ -54,7 +58,7 @@ ggplot(hikes, aes(x = rating)) +
 ```
 
 
-## Exercise 4: Bar Chart of Ratings - Part 2 {.unnumbered}
+### Exercise 4: Bar Chart of Ratings - Part 2 {.unnumbered}
 ```{r}
 # changes the style of the plot background [theme_minimal()]
 ggplot(hikes, aes(x = rating)) +
@@ -63,7 +67,7 @@ ggplot(hikes, aes(x = rating)) +
   theme_minimal()
 ```
 
-## Exercise 5: Bar Chart Follow-up {.unnumbered}
+### Exercise 5: Bar Chart Follow-up {.unnumbered}
 
 #### Part a {.unnumbered}
 
@@ -99,14 +103,14 @@ Is there anything you don't like about this barplot? For example: check out the 
 
 There is a space between each of the bars. I also didn't like the ordering of the hikes.
 
-## Exercise 6: Sad Bar Chart {.unnumbered}
+### Exercise 6: Sad Bar Chart {.unnumbered}
 ```{r}
 ggplot(hikes, aes(x=elevation)) +
   geom_bar()
 ```
 - This plot shows each hike's elevation as an individual bar. This isn't helpful when determining the frequency of hikes within an elevation range/threshhold.
 
-## Exercise 7: A Historgram of Elevation {.unnumbered}
+### Exercise 7: A Historgram of Elevation {.unnumbered}
 
 * there are 6 hikes with an elevation between 4500 and 4700 ft
 * 4 hikes have an elevation >5100 ft
@@ -115,12 +119,12 @@ __Describe the Histogram:__
 The center is around 4500 ft, while the average or typical hike elevation is between 4250 and 4500 ft. The hike distribution is unimodal and skewed right. The lowest hike has an elevation around 3800ft, while the highest hike has an elevation of ~5400 ft. Most of the hikes are between 4000 and 4750 ft and very few are above 5000 ft. There don't appear to be any outliers.
 
 
-## Exercise 8: Building Histograms - Part 1 {.unnumbered}
+### Exercise 8: Building Histograms - Part 1 {.unnumbered}
 ```{r}
 ggplot(hikes, aes(x = elevation)) +
   geom_histogram()
 ```
-## Exercise 9: Building Histograms - Part 2 {.unnumbered}
+### Exercise 9: Building Histograms - Part 2 {.unnumbered}
 ```{r}
 # Adds a histogram [geom_histogram()]
 ggplot(hikes, aes(x = elevation)) +
@@ -165,7 +169,7 @@ ggplot(hikes, aes(x = elevation)) +
 ```
 
 
-## Exercise 10: Histogram Follow-Up {.unnumbered}
+### Exercise 10: Histogram Follow-Up {.unnumbered}
 
 - What function added the histogram layer / geometry?
   - `geom_histogram()`
@@ -181,13 +185,13 @@ ggplot(hikes, aes(x = elevation)) +
   - makes too many bars with low frequency
 
 
-## Exercise 11: Density Plots {.unnumbered}
+### Exercise 11: Density Plots {.unnumbered}
 
 ```{r}
 ggplot(hikes, aes(x = elevation)) +
   geom_density()
 ```
-## Exercise 12: Density Plots vs Histograms {.unnumbered}
+### Exercise 12: Density Plots vs Histograms {.unnumbered}
 * `geom_density(color = "blue")` makes the outline of the curve blue
 * `geom_density(fill = "orange")` makes the area under the curve orange
 
@@ -198,7 +202,7 @@ ggplot(hikes, aes(x = elevation)) +
 * the shape is unimodal and skewed right 
 * majority of the hikes are between certain elevations, with some high outliers
 
-## Exercise 13: Code = communication {.unnumbered}
+### Exercise 13: Code = communication {.unnumbered}
 
 ```{r}
 # YUCK
@@ -217,7 +221,7 @@ ggplot(hikes, aes(x = elevation)) + geom_histogram(color = "white", binwidth = 2
 
 ```
 
-## Exercise 14: Practice
+### Exercise 14: Practice {.unnumbered}
 
 ```{r}
 # Data on students in this class

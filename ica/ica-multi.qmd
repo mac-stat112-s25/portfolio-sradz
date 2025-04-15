@@ -107,7 +107,7 @@ ggplot(weather, aes(y = temp3pm, x = temp9am, color=location, shape=raintoday)) 
 ggplot(weather, aes(y = temp3pm, x = date, color = location)) + 
   geom_line()
 ```
-## In-Class Exercises
+## In-Class Exercises {.unnumbered}
 ```{r}
 # Import and check out data
 education <- read.csv("https://mac-stat.github.io/data/sat.csv")
@@ -155,7 +155,7 @@ ggplot(education, aes(x=salary, y=sat, color=expend))+
   geom_point()
 ```
 
-### Exercise 4 {.unnumberd}
+### Exercise 4 {.unnumbered}
 ```{r}
 # splits the best-fit line into multiple lines to better fit the data
 # changing "2" to "3" generates more lines
@@ -196,5 +196,5 @@ ggplot(education, aes(x=expend, y=sat, color=fracCat))+
 * The fraction of students that took the test (fracCat) is a confounding variable and skews the data visualization
 * if not required to take the sat, if a student is behind or struggling in school, they probably wouldn't take the SAT and wouldn't bring the average down
 
-## Optional Exercises
+
 

@@ -111,7 +111,7 @@ more_food |>
   pivot_longer(cols = -customer, values_to = "order", names_to = "restaurant")
 
 ```
-## Exercises
+## Exercises {.unnumbered}
 
 ### Exercise 1 {.unnumbered}
 

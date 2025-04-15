@@ -1,5 +1,11 @@
 ---
 title: "Spatial Viz"
+
+execute: 
+  echo: false
+  warning: false
+  error: false
+
 ---
 
 Use this file to generate a professional looking **spatial** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
@@ -44,7 +50,7 @@ ggplot(MN_map)+
   theme_map()+
   labs(title = "Starbucks in Minnesota",
        subtitle = "Each green dot represents 1 Starbucks location",
-       caption = "map created by Sarah, Starbucks data by Danny Kaplan")+
+       caption = "map created by Sarah in 2025, Starbucks data by Danny Kaplan")+
   theme(plot.title=element_text(color="darkgreen", face="bold", size=25),
         plot.subtitle=element_text(size=10),
         plot.caption = element_text(size=8, face = "italic"))

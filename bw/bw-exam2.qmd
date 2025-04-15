@@ -1,6 +1,12 @@
 ---
 title: "Exam 2"
 format: html
+
+execute: 
+  echo: false
+  warning: false
+  error: false
+
 ---
 ## 2: Setup {.unnumbered}
 ```{r}

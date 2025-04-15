@@ -1,5 +1,11 @@
 ---
 title: "Quadvariate Viz"
+
+execute: 
+  echo: false
+  warning: false
+  error: false
+
 ---
 
 Use this file to generate a professional looking **quadvariate** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
@@ -19,13 +25,13 @@ ggplot(elections_GA, aes(x=percent_black, y=repub_pct_16, color=winner_16, shape
   geom_point(size=3)+
   scale_color_manual(values=c("blue","red"), labels = c("Democrat", "Republican"))+
   scale_shape_manual(values = c("D","R"), labels=c("Democrat", "Repubican"))+
-  labs(title = "How does Repblican Voting vary by race in Georgia?",
+  labs(title = "How does Repblican Voting vary by \nelection year and county demographics in Georgia?",
        subtitle = "Each point represents 1 county in Georgia",
        x = "Percent Black",
        y = "Percent Voted Republican (2016)",
        shape = "Winner 2012",
        color = "Winner 2016",
-       caption = "created by Sarah, data from 270towin.com")+
+       caption = "created by Sarah in 2025, data from 270towin.com")+
   theme(plot.title = element_text(face = "bold", size = 18),
         plot.caption=element_text(face = "italic"))
 
