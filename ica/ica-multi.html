@@ -325,16 +325,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul>
 </li>
   <li>
-<a href="#in-class-exercises" id="toc-in-class-exercises" class="nav-link" data-scroll-target="#in-class-exercises"><span class="header-section-number">14.1</span> In-Class Exercises</a>
+<a href="#in-class-exercises" id="toc-in-class-exercises" class="nav-link" data-scroll-target="#in-class-exercises">In-Class Exercises</a>
   <ul class="collapse">
 <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
   <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
-  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4"><span class="header-section-number">14.1.1</span> Exercise 4</a></li>
+  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
   <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
   </ul>
 </li>
-  <li><a href="#optional-exercises" id="toc-optional-exercises" class="nav-link" data-scroll-target="#optional-exercises"><span class="header-section-number">14.2</span> Optional Exercises</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -657,8 +656,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section></section><section id="in-class-exercises" class="level2" data-number="14.1"><h2 data-number="14.1" class="anchored" data-anchor-id="in-class-exercises">
-<span class="header-section-number">14.1</span> In-Class Exercises</h2>
+</section></section><section id="in-class-exercises" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="in-class-exercises">In-Class Exercises</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># Import and check out data</span></span>
 <span id="cb33-2"><a href="#cb33-2"></a>education <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/sat.csv"</span>)</span>
@@ -731,8 +729,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section><section id="exercise-4" class="level3 unnumberd" data-number="14.1.1"><h3 class="unnumberd anchored" data-number="14.1.1" data-anchor-id="exercise-4">
-<span class="header-section-number">14.1.1</span> Exercise 4</h3>
+</section><section id="exercise-4" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="co"># splits the best-fit line into multiple lines to better fit the data</span></span>
 <span id="cb42-2"><a href="#cb42-2"></a><span class="co"># changing "2" to "3" generates more lines</span></span>
@@ -800,13 +797,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>the high outliers (high SAT, low spending) skew the slope of the best-fit line to be negative</li>
 </ul>
 <p><strong>Simpson’s Paradox</strong> * Because different states have varying percentages of students that took the SAT, comparing SAT scores and spending shows that as spending increases, SAT score decreases. * The fraction of students that took the test (fracCat) is a confounding variable and skews the data visualization * if not required to take the sat, if a student is behind or struggling in school, they probably wouldn’t take the SAT and wouldn’t bring the average down</p>
-</section></section><section id="optional-exercises" class="level2" data-number="14.2"><h2 data-number="14.2" class="anchored" data-anchor-id="optional-exercises">
-<span class="header-section-number">14.2</span> Optional Exercises</h2>
 
 
 <!-- -->
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1545,7 +1540,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb48-121"><a href="#cb48-121"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">y =</span> temp3pm, <span class="at">x =</span> date, <span class="at">color =</span> location)) <span class="sc">+</span> </span>
 <span id="cb48-122"><a href="#cb48-122"></a>  <span class="fu">geom_line</span>()</span>
 <span id="cb48-123"><a href="#cb48-123"></a><span class="in">```</span></span>
-<span id="cb48-124"><a href="#cb48-124"></a><span class="fu">## In-Class Exercises</span></span>
+<span id="cb48-124"><a href="#cb48-124"></a><span class="fu">## In-Class Exercises {.unnumbered}</span></span>
 <span id="cb48-127"><a href="#cb48-127"></a><span class="in">```{r}</span></span>
 <span id="cb48-128"><a href="#cb48-128"></a><span class="co"># Import and check out data</span></span>
 <span id="cb48-129"><a href="#cb48-129"></a>education <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/sat.csv"</span>)</span>
@@ -1593,7 +1588,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb48-177"><a href="#cb48-177"></a>  <span class="fu">geom_point</span>()</span>
 <span id="cb48-178"><a href="#cb48-178"></a><span class="in">```</span></span>
 <span id="cb48-179"><a href="#cb48-179"></a></span>
-<span id="cb48-180"><a href="#cb48-180"></a><span class="fu">### Exercise 4 {.unnumberd}</span></span>
+<span id="cb48-180"><a href="#cb48-180"></a><span class="fu">### Exercise 4 {.unnumbered}</span></span>
 <span id="cb48-183"><a href="#cb48-183"></a><span class="in">```{r}</span></span>
 <span id="cb48-184"><a href="#cb48-184"></a><span class="co"># splits the best-fit line into multiple lines to better fit the data</span></span>
 <span id="cb48-185"><a href="#cb48-185"></a><span class="co"># changing "2" to "3" generates more lines</span></span>
@@ -1634,7 +1629,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb48-226"><a href="#cb48-226"></a><span class="ss">* </span>The fraction of students that took the test (fracCat) is a confounding variable and skews the data visualization</span>
 <span id="cb48-227"><a href="#cb48-227"></a><span class="ss">* </span>if not required to take the sat, if a student is behind or struggling in school, they probably wouldn't take the SAT and wouldn't bring the average down</span>
 <span id="cb48-228"><a href="#cb48-228"></a></span>
-<span id="cb48-229"><a href="#cb48-229"></a><span class="fu">## Optional Exercises</span></span>
+<span id="cb48-229"><a href="#cb48-229"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

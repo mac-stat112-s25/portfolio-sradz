@@ -335,7 +335,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
 <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
   <li><a href="#exercise-6" id="toc-exercise-6" class="nav-link" data-scroll-target="#exercise-6">Exercise 6</a></li>
-  <li><a href="#exercise-7" id="toc-exercise-7" class="nav-link" data-scroll-target="#exercise-7"><span class="header-section-number">17.0.1</span> Exercise 7</a></li>
+  <li><a href="#exercise-7" id="toc-exercise-7" class="nav-link" data-scroll-target="#exercise-7">Exercise 7</a></li>
   </ul>
 </li>
   </ul></nav>
@@ -757,7 +757,7 @@ dbl (5): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, year
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a><span class="co"># Get today's date</span></span>
 <span id="cb58-2"><a href="#cb58-2"></a><span class="fu">as.Date</span>(<span class="fu">today</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2025-03-06"</code></pre>
+<pre><code>[1] "2025-04-14"</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a><span class="co"># Let's store this as "today" so we can work with it below</span></span>
 <span id="cb60-2"><a href="#cb60-2"></a>today <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">today</span>())</span>
@@ -776,11 +776,11 @@ dbl (5): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, year
 <span id="cb64-2"><a href="#cb64-2"></a><span class="co"># putting label = TRUE puts the name of the month corresponding to the number </span></span>
 <span id="cb64-3"><a href="#cb64-3"></a><span class="fu">month</span>(today)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
+<pre><code>[1] 4</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a><span class="fu">month</span>(today, <span class="at">label =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] Mar
+<pre><code>[1] Apr
 12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; ... &lt; Dec</code></pre>
 </div>
 </div>
@@ -921,8 +921,7 @@ Attaching package: 'mosaic'</code></pre>
 </div>
 </div>
 </div>
-</section><section id="exercise-7" class="level3" data-number="17.0.1"><h3 data-number="17.0.1" class="anchored" data-anchor-id="exercise-7">
-<span class="header-section-number">17.0.1</span> Exercise 7</h3>
+</section><section id="exercise-7" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-7">Exercise 7</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a><span class="co"># wrangle and store data, then plot</span></span>
 <span id="cb89-2"><a href="#cb89-2"></a>penguins_minus_Gentoo <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
@@ -1891,7 +1890,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb97-274"><a href="#cb97-274"></a><span class="fu">ggplot</span>(daily_births, <span class="fu">aes</span>(<span class="at">x=</span>date, <span class="at">y=</span>total_births, <span class="at">color=</span>day))<span class="sc">+</span></span>
 <span id="cb97-275"><a href="#cb97-275"></a>  <span class="fu">geom_point</span>()</span>
 <span id="cb97-276"><a href="#cb97-276"></a><span class="in">```</span></span>
-<span id="cb97-277"><a href="#cb97-277"></a><span class="fu">### Exercise 7</span></span>
+<span id="cb97-277"><a href="#cb97-277"></a><span class="fu">### Exercise 7 {.unnumbered}</span></span>
 <span id="cb97-280"><a href="#cb97-280"></a><span class="in">```{r}</span></span>
 <span id="cb97-281"><a href="#cb97-281"></a><span class="co"># wrangle and store data, then plot</span></span>
 <span id="cb97-282"><a href="#cb97-282"></a>penguins_minus_Gentoo <span class="ot">&lt;-</span> penguins <span class="sc">|&gt;</span></span>
