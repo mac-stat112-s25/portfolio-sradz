@@ -2,9 +2,13 @@
 title: "Univariate Viz"
 
 execute: 
-  echo: false
+  echo: true
   warning: false
   error: false
+  
+format:
+  html:
+    code-fold: true
 
 ---
 

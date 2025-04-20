@@ -1,11 +1,14 @@
 ---
 title: "Exam 2"
-format: html
 
 execute: 
-  echo: false
+  echo: true
   warning: false
   error: false
+  
+format:
+  html:
+    code-fold: true
 
 ---
 ## 2: Setup {.unnumbered}
@@ -52,22 +55,30 @@ fc2 |>
   geom_col()+
   labs(x = "Country", y = "Total Consumption",
        title = "Top 5 Countries by Total Food Consumption",
-       caption = "Data from TidyTuesday (week of 02/18/2020)")
+       caption = "Created by Sarah in 2025, Data from TidyTuesday (week of 02/18/2020)")
 ```
 
 ## 4: Most Consuming Countries of Each Food {.unnumbered}
 
 __Reserach Question:__ **What are the top 5 countries for each food category?**
 
-```{r}
+```{r, fig.height=10, fig.width = 8}
+#| fig-alt: "Bar Graph showing the 5 countries with the greatest consumption for each food group"
+
+
 fc2 |>
   group_by(food_category) |>
   slice_max(n=5, consumption) |>
-  ggplot(aes(x=food_category, y = consumption, group = country))+
-  geom_col(position = position_dodge(width = 1), width = 1, fill = "lightblue1", color = "black")+
-  geom_text(aes(label = country, y = consumption*(2/3), group = country, angle = 90),
-             position = position_dodge(width = 1), size = 2, color = "black")
+  ggplot(aes(y=food_category, x = consumption, fill = food_category, group = country))+
+  geom_col(position = position_dodge(width = 1), width = 1, color = "black")+
+  geom_text(aes(label = country, x = consumption*(2/3), group = country, angle = 0),
+             position = position_dodge(width = 1), size = 2.5, color = "black")+
+  labs(title = "Most Consuming Countries of Each Food",
+       y = "Food Category", x = "Consumption (kg/person/year)",
+       caption = "Created by Sarah in 2025, Data from TidyTuesday (week of 02/18/2020)",
+       fill = "Food Category")
 ```
+
 
 ## 5: Food Consumption {.unnumbered}
 __Research Question:__ **What does the consumption of each food look like?**
@@ -96,11 +107,18 @@ ggplot(fc3) +
   geom_sf(aes(fill = n_category))+
   facet_wrap(~food_category)+
   labs(title = "Consumption of Food Categories by Country",
-       subtitle = "Consumption is standardized as [consumption-mean]/std dev for each food category",
-       caption = "Data from TidyTuesday (week of 02/18/2020)")+
+       subtitle = "Consumption is standardized as [consumption - mean]/[std dev] for each food category",
+       caption = "Created by Sarah in 2025, Data from TidyTuesday (week of 02/18/2020)",
+       fill = "Level")+
   theme_map()+
-  theme(legend.position = "bottom")+
-  scale_fill_manual(values= c("Very Low (-Inf to 0)" = "#f2ffff", "Low (0 to 1)" = "lightblue", "Medium (1 to 2)" = "lightskyblue", "High (2 to 3)" = "blue4", "Very High (3 to Inf)" = "black"))
+  theme(legend.position = "bottom",
+        theme(plot.title=element_text(face="bold", size=20)))+
+  scale_fill_manual(values= c("Very Low (-Inf to 0)" = "#f2ffff", 
+                              "Low (0 to 1)" = "lightblue", 
+                              "Medium (1 to 2)" = "lightskyblue", 
+                              "High (2 to 3)" = "blue4", 
+                              "Very High (3 to Inf)" = "black"))
+  
 
 ```
 

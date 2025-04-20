@@ -1,13 +1,19 @@
 ---
 title: "Exam 1"
-format: html
 
 execute: 
-  echo: false
+  echo: true
   warning: false
   error: false
+  
+format:
+  html:
+    code-fold: true
 
 ---
+
+## Set-up {.unnumbered}
+
 ::: {.callout-note title="Exam 1 Visualization"}
 Research question: **What does the consumption of each food category in each country look like?**
 
@@ -54,7 +60,9 @@ world2 <- world |>
 ```
 
 
+## Visualizations {.unnumbered}
 
+### Pork {.unnumbered}
 
 ```{r, fig.width=10, fig.height=6}
 #| fig-alt: "Choropleth map showing how pork consumption, measured in kg per person per year, varies by country."
@@ -66,7 +74,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Pork Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 18, 2020)")+
   theme(
     plot.title = element_text(color="salmon3", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -82,6 +90,7 @@ Pork consumption is highest in Europe (eg Spain, Germany) and China, but much lo
 
 :::
 
+### Poultry {.unnumbered}
 
 ```{r, fig.width=10, fig.height=6}
 #| fig-alt: "Choropleth map showing how poultry consumption, measured in kg per person per year, varies by country."
@@ -93,7 +102,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Poultry Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb `8, 2020)")+
   theme(
     plot.title = element_text(color="pink3", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -108,6 +117,7 @@ Poultry consumption is highest in the US, Saudi Arabia, Brazil, and Australia, b
 
 :::
 
+### Beef {.unnumbered}
 
 ```{r, fig.width=10, fig.height=6}
 #| fig-alt: "Choropleth map showing how beef consumption, measured in kg per person per year, varies by country."
@@ -119,7 +129,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Beef  Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 18, 2020)")+
   theme(
     plot.title = element_text(color="red4", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -134,6 +144,7 @@ Beef consumption is very high in Argentina, with the US, Brazil, and Australia a
 :::
 
 
+### Lamb and Goat {.unnumbered}
 
 ```{r, fig.width=10, fig.height=6}
 #| fig-alt: "Choropleth map showing how lamb and goat consumption, measured in kg per person per year, varies by country."
@@ -146,7 +157,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Lamb & Goat Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 18, 2020)")+
   theme(
     plot.title = element_text(color="bisque4", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -158,7 +169,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
 Lamb and goat consumption is relatively low throughout the world, apart from a few countries, where it is very high (ie Iceland, New Zealand, Greece). I was surprised to see such a high value in Iceland.
 :::
 
-
+### Fish {.unnumbered}
 
 ```{r,  fig.width=10, fig.height=6}
 #| fig-alt: "Choropleth map showing how fish consumption, measured in kg per person per year, varies by country."
@@ -170,7 +181,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Fish Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 18, 2020)")+
   theme(
     plot.title = element_text(color="#579fcf", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -184,7 +195,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
 Similar to lamb and goat, fish consumption is also relatively low worldwide. There are some outliers, like Iceland, Myanmar and Malaysia. The island nation of the Maldives has a extremely high fish consumption (179 kg/person/year), but it's difficult to see on the map.
 :::
 
-
+### Egg {.unnumbered}
 
 ```{r,  fig.width=10, fig.height=6}
 #| fig-alt: "Choropleth map showing how egg consumption, measured in kg per person per year, varies by country."
@@ -196,7 +207,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Eggs Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 18, 2020)")+
   theme(
     plot.title = element_text(color="goldenrod3", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -210,7 +221,7 @@ Egg consumption is very high in China, Japan, Mexico, and relatively high throug
 :::
 
 
-
+### Milk and Cheese {.unnumbered}
 
 ```{r, fig.width=10, fig.height=6}
 #| fig-alt: "Choropleth map showing how milk, including cheese, consumption, measured in kg per person per year, varies by country."
@@ -222,7 +233,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Milk & Cheese Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 18, 2020)")+
   theme(
     plot.title = element_text(color="royalblue", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -236,6 +247,7 @@ Milk and cheese consumption is very high in Europe, especially Scandinavia, Kaza
 :::
 
 
+### Wheat {.unnumbered}
 
 ```{r, fig.width=10, fig.height=6}
 #| fig-alt: "Choropleth map showing how wheat and wheat product consumption, measured in kg per person per year, varies by country."
@@ -247,7 +259,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Wheat Product Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 18, 2020)")+
   theme(
     plot.title = element_text(color="burlywood4", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -260,7 +272,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
 The consumption of wheat and wheat products is the highest in North Africa and the Middle East (ie Algeria, Morocco, Turkey, etc). In Central America, sub-Saharan Africa, and most of Asia + Oceania, it's on the lower side.
 :::
 
-
+### Rice {.unnumbered}
 
 ```{r, fig.width=10, fig.height=6}
 #| fig-alt: "Choropleth map showing how rice consumption, measured in kg per person per year, varies by country."
@@ -272,7 +284,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Rice Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 18, 2020)")+
   theme(
     plot.title = element_text(color="green4", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -286,7 +298,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
 Rice consumption is the greatest in Southeast Asia, with East Asian countries, but very low in most other countries. It is moderately high in West Africa and Madagascar, along with South and East Asia.
 :::
 
-
+### Soybean {.unnumbered}
 
 ```{r, fig.width=10, fig.height=6}
 #| fig-alt: "Choropleth map showing how soybean consumption, measured in kg per person per year, varies by country."
@@ -298,7 +310,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Soybean Consumption by Country",
        subtitle = "Measured in kg/person/year \nGrey = No Data",
-       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)")+
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 18, 2020)")+
   theme(
     plot.title = element_text(color="magenta4", face = "bold", size = 25, hjust = 0.5),
     plot.subtitle = element_text(hjust = 0.5, size = 13, face = "italic"),
@@ -312,6 +324,8 @@ Soybean consumption varies a lot by country. It is very high in some countries, 
 :::
 
 
+### Nuts {.unnumbered}
+
 ```{r, fig.width=10, fig.height=6}
 #| fig-alt: "Choropleth map showing how nut (including peanut butter) consumption, measured in kg per person per year, varies by country."
 
@@ -322,7 +336,7 @@ ggplot(world2, aes(x=long, y = lat, group = group))+
   theme_map()+
   labs(title = "Nuts Consumption by Country",
        subtitle = "includes peanut butter; Measured in kg/person/year \nGrey = No Data",
-       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 2, 2020)",
+       caption = "Created by Sarah in 2025, Data from TidyTuesday project (week of Feb 18, 2020)",
        fill = "consumption")+
   theme(
     plot.title = element_text(color="orange3", face = "bold", size = 25, hjust = 0.5),
