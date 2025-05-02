@@ -12,7 +12,6 @@ format:
 
 ---
 
-Use this file to generate a professional looking **trivariate** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
 
 ```{r}
 #| fig-alt: "Scatterplot of SAT scores versus education spending per pupil, seperated by the percentage of students that took the test."

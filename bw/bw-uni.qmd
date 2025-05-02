@@ -12,7 +12,6 @@ format:
 
 ---
 
-Use this file to generate a professional looking **univariate** visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
 
 ```{r}
 #| fig-alt: "Histogram showing the distribution of median rent in the US county."

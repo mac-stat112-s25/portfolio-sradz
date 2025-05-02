@@ -12,8 +12,6 @@ format:
 
 ---
 
-Use this file to generate a professional looking **quadvariate** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
-
 ```{r}
 #| fig-alt: Scatterplot comparing republican votes and black population in Georgia counties. The winner in 2012 and 2016 are also graphed to compare voting patterns over time.
 
@@ -25,20 +23,22 @@ elections_GA <- elections |>
   filter(state_abbr %in% c("GA"))
 
 # create plot
-ggplot(elections_GA, aes(x=percent_black, y=repub_pct_16, color=winner_16, shape=winner_12))+
+ggplot(elections_GA, aes(x=percent_black, y=repub_pct_16, color=winner_12, shape=winner_16))+
+  geom_hline(aes(yintercept = 50), alpha = 0.5)+
   geom_point(size=3)+
   scale_color_manual(values=c("blue","red"), labels = c("Democrat", "Republican"))+
   scale_shape_manual(values = c("D","R"), labels=c("Democrat", "Repubican"))+
-  labs(title = "How does Repblican Voting vary by \nelection year and county demographics in Georgia?",
+  labs(title = "Republican Voting Trends by County \nDemographics in Georgia",
        subtitle = "Each point represents 1 county in Georgia",
-       x = "Percent Black",
+       x = "Black Population (%)",
        y = "Percent Voted Republican (2016)",
-       shape = "Winner 2012",
-       color = "Winner 2016",
+       shape = "Winner 2016",
+       color = "Winner 2012",
        caption = "created by Sarah in 2025, data from 270towin.com")+
   theme(plot.title = element_text(face = "bold", size = 18),
-        plot.caption=element_text(face = "italic"))
-
+        plot.caption=element_text(face = "italic"))+
+  geom_rect(aes(xmin = 30, xmax = 65, ymin =45, ymax = 55),
+            fill = NA, linetype = "dashed", color = "black")
 
 
 ```

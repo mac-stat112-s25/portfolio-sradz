@@ -12,7 +12,6 @@ format:
 
 ---
 
-Use this file to generate a professional looking **bivariate** visualization.  The visualization will not perfect the first time but you are expected to improve it throughout the semester especially after covering advanced topics such as effective viz.
 
 ```{r}
 #| fig-alt: 3 box plots comparing temperatures (in Celsius) of three different locations in Australia 
